@@ -1,0 +1,346 @@
+-I: Adding /home/amber18/dat/leap/prep to search path.
+-I: Adding /home/amber18/dat/leap/lib to search path.
+-I: Adding /home/amber18/dat/leap/parm to search path.
+-I: Adding /home/amber18/dat/leap/cmd to search path.
+-s: Ignoring startup file: leaprc
+-f: Source tleap_vac.in.
+
+Welcome to LEaP!
+Sourcing: ./tleap_vac.in
+----- Source: /home/amber18/dat/leap/cmd/leaprc.protein.ff14SB
+----- Source of /home/amber18/dat/leap/cmd/leaprc.protein.ff14SB done
+Log file: ./leap.log
+Loading parameters: /home/amber18/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.ff14SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff14SB protein backbone and sidechain parameters
+Loading library: /home/amber18/dat/leap/lib/amino12.lib
+Loading library: /home/amber18/dat/leap/lib/aminoct12.lib
+Loading library: /home/amber18/dat/leap/lib/aminont12.lib
+----- Source: /home/amber18/dat/leap/cmd/leaprc.gaff
+----- Source of /home/amber18/dat/leap/cmd/leaprc.gaff done
+Log file: ./leap.log
+Loading parameters: /home/amber18/dat/leap/parm/gaff.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 1.81, May 2017)
+Loading parameters: ./dum.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Parameters for a "Lead-like" Dummy Atom
+Loading Mol2 file: ./dum.mol2
+Reading MOLECULE named DUM
+Loading parameters: ./lig.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ./lig.mol2
+Reading MOLECULE named LIG
+Loading PDB file: ./build.pdb
+  total atoms in file: 954
+  Leap added 877 missing atoms according to residue templates:
+       877 H / lone pairs
+Checking 'model'....
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.254288 angstroms between .R<DUM 1>.A<Pb 1> and .R<MET 80>.A<HG3 10>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H12 29> and .R<LIG 114>.A<H12 29>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.096198 angstroms between .R<LIG 113>.A<H12 29> and .R<LIG 114>.A<C11 16>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H11 28> and .R<LIG 114>.A<H11 28>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.096404 angstroms between .R<LIG 113>.A<H11 28> and .R<LIG 114>.A<C11 16>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H10 27> and .R<LIG 114>.A<H10 27>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.097230 angstroms between .R<LIG 113>.A<H10 27> and .R<LIG 114>.A<C11 16>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H9 26> and .R<LIG 114>.A<H9 26>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.012596 angstroms between .R<LIG 113>.A<H9 26> and .R<LIG 114>.A<N2 15>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H8 25> and .R<LIG 114>.A<H8 25>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.086699 angstroms between .R<LIG 113>.A<H8 25> and .R<LIG 114>.A<C10 14>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H7 24> and .R<LIG 114>.A<H7 24>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.086033 angstroms between .R<LIG 113>.A<H7 24> and .R<LIG 114>.A<C9 13>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H6 23> and .R<LIG 114>.A<H6 23>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.085616 angstroms between .R<LIG 113>.A<H6 23> and .R<LIG 114>.A<C8 12>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H5 22> and .R<LIG 114>.A<H5 22>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.085480 angstroms between .R<LIG 113>.A<H5 22> and .R<LIG 114>.A<C7 11>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H4 21> and .R<LIG 114>.A<H4 21>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.085732 angstroms between .R<LIG 113>.A<H4 21> and .R<LIG 114>.A<C6 10>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H3 20> and .R<LIG 114>.A<H3 20>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.097722 angstroms between .R<LIG 113>.A<H3 20> and .R<LIG 114>.A<C3 6>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H2 19> and .R<LIG 114>.A<H2 19>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.097236 angstroms between .R<LIG 113>.A<H2 19> and .R<LIG 114>.A<C3 6>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H1 18> and .R<LIG 114>.A<H1 18>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.096783 angstroms between .R<LIG 113>.A<H1 18> and .R<LIG 114>.A<C3 6>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<H 17> and .R<LIG 114>.A<H 17>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.082395 angstroms between .R<LIG 113>.A<H 17> and .R<LIG 114>.A<C1 2>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.096198 angstroms between .R<LIG 113>.A<C11 16> and .R<LIG 114>.A<H12 29>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.096404 angstroms between .R<LIG 113>.A<C11 16> and .R<LIG 114>.A<H11 28>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.097230 angstroms between .R<LIG 113>.A<C11 16> and .R<LIG 114>.A<H10 27>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C11 16> and .R<LIG 114>.A<C11 16>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.012596 angstroms between .R<LIG 113>.A<N2 15> and .R<LIG 114>.A<H9 26>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<N2 15> and .R<LIG 114>.A<N2 15>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.399259 angstroms between .R<LIG 113>.A<N2 15> and .R<LIG 114>.A<C 1>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.086699 angstroms between .R<LIG 113>.A<C10 14> and .R<LIG 114>.A<H8 25>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C10 14> and .R<LIG 114>.A<C10 14>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.397345 angstroms between .R<LIG 113>.A<C10 14> and .R<LIG 114>.A<C9 13>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.374241 angstroms between .R<LIG 113>.A<C10 14> and .R<LIG 114>.A<C5 9>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.086033 angstroms between .R<LIG 113>.A<C9 13> and .R<LIG 114>.A<H7 24>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.397345 angstroms between .R<LIG 113>.A<C9 13> and .R<LIG 114>.A<C10 14>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C9 13> and .R<LIG 114>.A<C9 13>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.402103 angstroms between .R<LIG 113>.A<C9 13> and .R<LIG 114>.A<C8 12>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.085616 angstroms between .R<LIG 113>.A<C8 12> and .R<LIG 114>.A<H6 23>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.402103 angstroms between .R<LIG 113>.A<C8 12> and .R<LIG 114>.A<C9 13>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C8 12> and .R<LIG 114>.A<C8 12>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.423470 angstroms between .R<LIG 113>.A<C8 12> and .R<LIG 114>.A<C7 11>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.085480 angstroms between .R<LIG 113>.A<C7 11> and .R<LIG 114>.A<H5 22>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.423470 angstroms between .R<LIG 113>.A<C7 11> and .R<LIG 114>.A<C8 12>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C7 11> and .R<LIG 114>.A<C7 11>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.397708 angstroms between .R<LIG 113>.A<C7 11> and .R<LIG 114>.A<C6 10>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.085732 angstroms between .R<LIG 113>.A<C6 10> and .R<LIG 114>.A<H4 21>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.397708 angstroms between .R<LIG 113>.A<C6 10> and .R<LIG 114>.A<C7 11>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C6 10> and .R<LIG 114>.A<C6 10>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.400976 angstroms between .R<LIG 113>.A<C6 10> and .R<LIG 114>.A<C5 9>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.374241 angstroms between .R<LIG 113>.A<C5 9> and .R<LIG 114>.A<C10 14>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.400976 angstroms between .R<LIG 113>.A<C5 9> and .R<LIG 114>.A<C6 10>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C5 9> and .R<LIG 114>.A<C5 9>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.427720 angstroms between .R<LIG 113>.A<C5 9> and .R<LIG 114>.A<C4 8>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.427720 angstroms between .R<LIG 113>.A<C4 8> and .R<LIG 114>.A<C5 9>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C4 8> and .R<LIG 114>.A<C4 8>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.332338 angstroms between .R<LIG 113>.A<C4 8> and .R<LIG 114>.A<N1 7>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.439957 angstroms between .R<LIG 113>.A<C4 8> and .R<LIG 114>.A<C 1>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.332338 angstroms between .R<LIG 113>.A<N1 7> and .R<LIG 114>.A<C4 8>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<N1 7> and .R<LIG 114>.A<N1 7>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.335303 angstroms between .R<LIG 113>.A<N1 7> and .R<LIG 114>.A<N 5>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.097722 angstroms between .R<LIG 113>.A<C3 6> and .R<LIG 114>.A<H3 20>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.097236 angstroms between .R<LIG 113>.A<C3 6> and .R<LIG 114>.A<H2 19>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.096783 angstroms between .R<LIG 113>.A<C3 6> and .R<LIG 114>.A<H1 18>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C3 6> and .R<LIG 114>.A<C3 6>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.445994 angstroms between .R<LIG 113>.A<C3 6> and .R<LIG 114>.A<N 5>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.335303 angstroms between .R<LIG 113>.A<N 5> and .R<LIG 114>.A<N1 7>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.445994 angstroms between .R<LIG 113>.A<N 5> and .R<LIG 114>.A<C3 6>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<N 5> and .R<LIG 114>.A<N 5>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.388883 angstroms between .R<LIG 113>.A<N 5> and .R<LIG 114>.A<C2 3>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<O 4> and .R<LIG 114>.A<O 4>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.229806 angstroms between .R<LIG 113>.A<O 4> and .R<LIG 114>.A<C2 3>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.388883 angstroms between .R<LIG 113>.A<C2 3> and .R<LIG 114>.A<N 5>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.229806 angstroms between .R<LIG 113>.A<C2 3> and .R<LIG 114>.A<O 4>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C2 3> and .R<LIG 114>.A<C2 3>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.474687 angstroms between .R<LIG 113>.A<C2 3> and .R<LIG 114>.A<C1 2>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.082395 angstroms between .R<LIG 113>.A<C1 2> and .R<LIG 114>.A<H 17>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.474687 angstroms between .R<LIG 113>.A<C1 2> and .R<LIG 114>.A<C2 3>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C1 2> and .R<LIG 114>.A<C1 2>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.391834 angstroms between .R<LIG 113>.A<C1 2> and .R<LIG 114>.A<C 1>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.399259 angstroms between .R<LIG 113>.A<C 1> and .R<LIG 114>.A<N2 15>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.439957 angstroms between .R<LIG 113>.A<C 1> and .R<LIG 114>.A<C4 8>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.391834 angstroms between .R<LIG 113>.A<C 1> and .R<LIG 114>.A<C1 2>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 0.000000 angstroms between .R<LIG 113>.A<C 1> and .R<LIG 114>.A<C 1>
+Checking parameters for unit 'model'.
+Checking for bond parameters.
+Checking for angle parameters.
+check:  Warnings: 88
+Unit is OK.
+Writing pdb file: vac.pdb
+
+/home/amber18/bin/teLeap: Warning!
+ Converting N-terminal residue name to PDB format: NSER -> SER
+
+/home/amber18/bin/teLeap: Warning!
+ Converting C-terminal residue name to PDB format: CMET -> MET
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 386 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CMET	1
+	LIG	2
+	NSER	1
+  )
+ (no restraints)
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 90; Notes = 0.
