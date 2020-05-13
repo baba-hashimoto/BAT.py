@@ -1,0 +1,42 @@
+source leaprc.protein.ff14SB
+source leaprc.gaff
+
+# Load the dummy atom parameters
+loadamberparams dum.frcmod
+DUM = loadmol2 dum.mol2
+
+# Load the ligand parameters
+loadamberparams lig.frcmod
+LIG = loadmol2 lig.mol2
+
+model = loadpdb build.pdb
+
+# Load the water and jc ion parameters
+source leaprc.water.tip3p
+loadamberparams frcmod.ionsjc_tip3p
+
+# Create water box with chosen model
+solvatebox model TIP3PBOX {12.0 12.0 32.1621330541}
+
+# Remove a few waters manually
+remove model model.13065
+remove model model.13066
+remove model model.13067
+remove model model.13068
+remove model model.13069
+remove model model.13070
+remove model model.13071
+remove model model.13072
+remove model model.13073
+remove model model.13074
+remove model model.13075
+remove model model.13076
+
+# Add ions for neutralization/ionization
+addionsrand model Na+ 32
+addionsrand model Cl- 0
+
+desc model
+savepdb model full.pdb
+saveamberparm model full.prmtop full.inpcrd
+quit

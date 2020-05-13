@@ -1,0 +1,370 @@
+
+CPPTRAJ: Trajectory Analysis. V4.14.0 (AmberTools V19.12)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 04/22/20 12:15:27
+| Available memory: 52.081 GB
+
+INPUT: Reading input from 'assign.in'
+  [parm full.hmr.prmtop]
+	Reading 'full.hmr.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin full.inpcrd]
+	Reading 'full.inpcrd' as Amber Restart
+  [distance r0 :2@Pb :58@CA noimage out assign.dat]
+    DISTANCE: :2@Pb to :58@CA, non-imaged, center of mass.
+  [angle r1 :1@Pb :2@Pb :58@CA out assign.dat]
+    ANGLE: [:1@Pb]-[:2@Pb]-[:58@CA]
+  [dihedral r2 :3@Pb :1@Pb :2@Pb :58@CA out assign.dat]
+    DIHEDRAL: [:3@Pb]-[:1@Pb]-[:2@Pb]-[:58@CA]
+              Output range is -180 to 180 degrees.
+  [angle r3 :2@Pb :58@CA :79@CA out assign.dat]
+    ANGLE: [:2@Pb]-[:58@CA]-[:79@CA]
+  [dihedral r4 :1@Pb :2@Pb :58@CA :79@CA out assign.dat]
+    DIHEDRAL: [:1@Pb]-[:2@Pb]-[:58@CA]-[:79@CA]
+              Output range is -180 to 180 degrees.
+  [dihedral r5 :2@Pb :58@CA :79@CA :105@CA out assign.dat]
+    DIHEDRAL: [:2@Pb]-[:58@CA]-[:79@CA]-[:105@CA]
+              Output range is -180 to 180 degrees.
+  [distance r6 :58@CA :79@CA noimage out assign.dat]
+    DISTANCE: :58@CA to :79@CA, non-imaged, center of mass.
+  [distance r7 :79@CA :105@CA noimage out assign.dat]
+    DISTANCE: :79@CA to :105@CA, non-imaged, center of mass.
+  [distance r8 :105@CA :58@CA noimage out assign.dat]
+    DISTANCE: :105@CA to :58@CA, non-imaged, center of mass.
+  [dihedral r9 :34@N :34@CA :34@C :35@N out assign.dat]
+    DIHEDRAL: [:34@N]-[:34@CA]-[:34@C]-[:35@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r10 :34@C :35@N :35@CA :35@C out assign.dat]
+    DIHEDRAL: [:34@C]-[:35@N]-[:35@CA]-[:35@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r11 :35@N :35@CA :35@C :36@N out assign.dat]
+    DIHEDRAL: [:35@N]-[:35@CA]-[:35@C]-[:36@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r12 :35@C :36@N :36@CA :36@C out assign.dat]
+    DIHEDRAL: [:35@C]-[:36@N]-[:36@CA]-[:36@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r13 :36@N :36@CA :36@C :37@N out assign.dat]
+    DIHEDRAL: [:36@N]-[:36@CA]-[:36@C]-[:37@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r14 :36@C :37@N :37@CA :37@C out assign.dat]
+    DIHEDRAL: [:36@C]-[:37@N]-[:37@CA]-[:37@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r15 :37@N :37@CA :37@C :38@N out assign.dat]
+    DIHEDRAL: [:37@N]-[:37@CA]-[:37@C]-[:38@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r16 :37@C :38@N :38@CA :38@C out assign.dat]
+    DIHEDRAL: [:37@C]-[:38@N]-[:38@CA]-[:38@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r17 :38@N :38@CA :38@C :39@N out assign.dat]
+    DIHEDRAL: [:38@N]-[:38@CA]-[:38@C]-[:39@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r18 :38@C :39@N :39@CA :39@C out assign.dat]
+    DIHEDRAL: [:38@C]-[:39@N]-[:39@CA]-[:39@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r19 :39@N :39@CA :39@C :40@N out assign.dat]
+    DIHEDRAL: [:39@N]-[:39@CA]-[:39@C]-[:40@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r20 :39@C :40@N :40@CA :40@C out assign.dat]
+    DIHEDRAL: [:39@C]-[:40@N]-[:40@CA]-[:40@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r21 :40@N :40@CA :40@C :41@N out assign.dat]
+    DIHEDRAL: [:40@N]-[:40@CA]-[:40@C]-[:41@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r22 :40@C :41@N :41@CA :41@C out assign.dat]
+    DIHEDRAL: [:40@C]-[:41@N]-[:41@CA]-[:41@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r23 :41@N :41@CA :41@C :42@N out assign.dat]
+    DIHEDRAL: [:41@N]-[:41@CA]-[:41@C]-[:42@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r24 :41@C :42@N :42@CA :42@C out assign.dat]
+    DIHEDRAL: [:41@C]-[:42@N]-[:42@CA]-[:42@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r25 :42@N :42@CA :42@C :43@N out assign.dat]
+    DIHEDRAL: [:42@N]-[:42@CA]-[:42@C]-[:43@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r26 :42@C :43@N :43@CA :43@C out assign.dat]
+    DIHEDRAL: [:42@C]-[:43@N]-[:43@CA]-[:43@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r27 :43@N :43@CA :43@C :44@N out assign.dat]
+    DIHEDRAL: [:43@N]-[:43@CA]-[:43@C]-[:44@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r28 :43@C :44@N :44@CA :44@C out assign.dat]
+    DIHEDRAL: [:43@C]-[:44@N]-[:44@CA]-[:44@C]
+              Output range is -180 to 180 degrees.
+  [dihedral r29 :44@N :44@CA :44@C :45@N out assign.dat]
+    DIHEDRAL: [:44@N]-[:44@CA]-[:44@C]-[:45@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r30 :44@C :45@N :45@CA :45@C out assign.dat]
+    DIHEDRAL: [:44@C]-[:45@N]-[:45@CA]-[:45@C]
+              Output range is -180 to 180 degrees.
+  [distance r31 :1@Pb :113@C3 noimage out assign.dat]
+    DISTANCE: :1@Pb to :113@C3, non-imaged, center of mass.
+  [angle r32 :2@Pb :1@Pb :113@C3 out assign.dat]
+    ANGLE: [:2@Pb]-[:1@Pb]-[:113@C3]
+  [dihedral r33 :3@Pb :2@Pb :1@Pb :113@C3 out assign.dat]
+    DIHEDRAL: [:3@Pb]-[:2@Pb]-[:1@Pb]-[:113@C3]
+              Output range is -180 to 180 degrees.
+  [angle r34 :1@Pb :113@C3 :113@C9 out assign.dat]
+    ANGLE: [:1@Pb]-[:113@C3]-[:113@C9]
+  [dihedral r35 :2@Pb :1@Pb :113@C3 :113@C9 out assign.dat]
+    DIHEDRAL: [:2@Pb]-[:1@Pb]-[:113@C3]-[:113@C9]
+              Output range is -180 to 180 degrees.
+  [dihedral r36 :1@Pb :113@C3 :113@C9 :113@C11 out assign.dat]
+    DIHEDRAL: [:1@Pb]-[:113@C3]-[:113@C9]-[:113@C11]
+              Output range is -180 to 180 degrees.
+  [distance r37 :113@C3 :113@C9 noimage out assign.dat]
+    DISTANCE: :113@C3 to :113@C9, non-imaged, center of mass.
+  [distance r38 :113@C9 :113@C11 noimage out assign.dat]
+    DISTANCE: :113@C9 to :113@C11, non-imaged, center of mass.
+  [distance r39 :113@C11 :113@C3 noimage out assign.dat]
+    DISTANCE: :113@C11 to :113@C3, non-imaged, center of mass.
+  [dihedral r40 :113@C5 :113@C10 :113@C9 :113@C8 out assign.dat]
+    DIHEDRAL: [:113@C5]-[:113@C10]-[:113@C9]-[:113@C8]
+              Output range is -180 to 180 degrees.
+  [dihedral r41 :113@C4 :113@C5 :113@C6 :113@C7 out assign.dat]
+    DIHEDRAL: [:113@C4]-[:113@C5]-[:113@C6]-[:113@C7]
+              Output range is -180 to 180 degrees.
+  [dihedral r42 :113@C7 :113@C8 :113@C9 :113@C10 out assign.dat]
+    DIHEDRAL: [:113@C7]-[:113@C8]-[:113@C9]-[:113@C10]
+              Output range is -180 to 180 degrees.
+  [dihedral r43 :113@C6 :113@C7 :113@C8 :113@C9 out assign.dat]
+    DIHEDRAL: [:113@C6]-[:113@C7]-[:113@C8]-[:113@C9]
+              Output range is -180 to 180 degrees.
+  [dihedral r44 :113@C5 :113@C6 :113@C7 :113@C8 out assign.dat]
+    DIHEDRAL: [:113@C5]-[:113@C6]-[:113@C7]-[:113@C8]
+              Output range is -180 to 180 degrees.
+  [dihedral r45 :113@C4 :113@C :113@N2 :113@C11 out assign.dat]
+    DIHEDRAL: [:113@C4]-[:113@C]-[:113@N2]-[:113@C11]
+              Output range is -180 to 180 degrees.
+  [dihedral r46 :113@C4 :113@C5 :113@C10 :113@C9 out assign.dat]
+    DIHEDRAL: [:113@C4]-[:113@C5]-[:113@C10]-[:113@C9]
+              Output range is -180 to 180 degrees.
+  [dihedral r47 :113@C4 :113@C :113@C1 :113@C2 out assign.dat]
+    DIHEDRAL: [:113@C4]-[:113@C]-[:113@C1]-[:113@C2]
+              Output range is -180 to 180 degrees.
+  [dihedral r48 :113@C2 :113@N :113@N1 :113@C4 out assign.dat]
+    DIHEDRAL: [:113@C2]-[:113@N]-[:113@N1]-[:113@C4]
+              Output range is -180 to 180 degrees.
+  [dihedral r49 :113@C1 :113@C :113@C4 :113@C5 out assign.dat]
+    DIHEDRAL: [:113@C1]-[:113@C]-[:113@C4]-[:113@C5]
+              Output range is -180 to 180 degrees.
+  [dihedral r50 :113@C1 :113@C2 :113@N :113@C3 out assign.dat]
+    DIHEDRAL: [:113@C1]-[:113@C2]-[:113@N]-[:113@C3]
+              Output range is -180 to 180 degrees.
+  [dihedral r51 :113@C :113@C1 :113@C2 :113@O out assign.dat]
+    DIHEDRAL: [:113@C]-[:113@C1]-[:113@C2]-[:113@O]
+              Output range is -180 to 180 degrees.
+  [dihedral r52 :113@C :113@C4 :113@N1 :113@N out assign.dat]
+    DIHEDRAL: [:113@C]-[:113@C4]-[:113@N1]-[:113@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r53 :113@C :113@C4 :113@C5 :113@C10 out assign.dat]
+    DIHEDRAL: [:113@C]-[:113@C4]-[:113@C5]-[:113@C10]
+              Output range is -180 to 180 degrees.
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: full.hmr.prmtop, 40866 atoms, 13177 res, box: Orthogonal, 13069 mol, 13000 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'full.inpcrd' is an AMBER restart file, no velocities, Parm full.hmr.prmtop (Orthogonal box) (reading 1 of 1)
+  Coordinate processing will occur on 1 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'full.hmr.prmtop' (54 actions):
+  0: [distance r0 :2@Pb :58@CA noimage out assign.dat]
+	:2@Pb (1 atoms) to :58@CA (1 atoms), imaging off.
+  1: [angle r1 :1@Pb :2@Pb :58@CA out assign.dat]
+	 [:1@Pb](1) [:2@Pb](1) [:58@CA](1)
+  2: [dihedral r2 :3@Pb :1@Pb :2@Pb :58@CA out assign.dat]
+	 [:3@Pb](1) [:1@Pb](1) [:2@Pb](1) [:58@CA](1)
+  3: [angle r3 :2@Pb :58@CA :79@CA out assign.dat]
+	 [:2@Pb](1) [:58@CA](1) [:79@CA](1)
+  4: [dihedral r4 :1@Pb :2@Pb :58@CA :79@CA out assign.dat]
+	 [:1@Pb](1) [:2@Pb](1) [:58@CA](1) [:79@CA](1)
+  5: [dihedral r5 :2@Pb :58@CA :79@CA :105@CA out assign.dat]
+	 [:2@Pb](1) [:58@CA](1) [:79@CA](1) [:105@CA](1)
+  6: [distance r6 :58@CA :79@CA noimage out assign.dat]
+	:58@CA (1 atoms) to :79@CA (1 atoms), imaging off.
+  7: [distance r7 :79@CA :105@CA noimage out assign.dat]
+	:79@CA (1 atoms) to :105@CA (1 atoms), imaging off.
+  8: [distance r8 :105@CA :58@CA noimage out assign.dat]
+	:105@CA (1 atoms) to :58@CA (1 atoms), imaging off.
+  9: [dihedral r9 :34@N :34@CA :34@C :35@N out assign.dat]
+	 [:34@N](1) [:34@CA](1) [:34@C](1) [:35@N](1)
+  10: [dihedral r10 :34@C :35@N :35@CA :35@C out assign.dat]
+	 [:34@C](1) [:35@N](1) [:35@CA](1) [:35@C](1)
+  11: [dihedral r11 :35@N :35@CA :35@C :36@N out assign.dat]
+	 [:35@N](1) [:35@CA](1) [:35@C](1) [:36@N](1)
+  12: [dihedral r12 :35@C :36@N :36@CA :36@C out assign.dat]
+	 [:35@C](1) [:36@N](1) [:36@CA](1) [:36@C](1)
+  13: [dihedral r13 :36@N :36@CA :36@C :37@N out assign.dat]
+	 [:36@N](1) [:36@CA](1) [:36@C](1) [:37@N](1)
+  14: [dihedral r14 :36@C :37@N :37@CA :37@C out assign.dat]
+	 [:36@C](1) [:37@N](1) [:37@CA](1) [:37@C](1)
+  15: [dihedral r15 :37@N :37@CA :37@C :38@N out assign.dat]
+	 [:37@N](1) [:37@CA](1) [:37@C](1) [:38@N](1)
+  16: [dihedral r16 :37@C :38@N :38@CA :38@C out assign.dat]
+	 [:37@C](1) [:38@N](1) [:38@CA](1) [:38@C](1)
+  17: [dihedral r17 :38@N :38@CA :38@C :39@N out assign.dat]
+	 [:38@N](1) [:38@CA](1) [:38@C](1) [:39@N](1)
+  18: [dihedral r18 :38@C :39@N :39@CA :39@C out assign.dat]
+	 [:38@C](1) [:39@N](1) [:39@CA](1) [:39@C](1)
+  19: [dihedral r19 :39@N :39@CA :39@C :40@N out assign.dat]
+	 [:39@N](1) [:39@CA](1) [:39@C](1) [:40@N](1)
+  20: [dihedral r20 :39@C :40@N :40@CA :40@C out assign.dat]
+	 [:39@C](1) [:40@N](1) [:40@CA](1) [:40@C](1)
+  21: [dihedral r21 :40@N :40@CA :40@C :41@N out assign.dat]
+	 [:40@N](1) [:40@CA](1) [:40@C](1) [:41@N](1)
+  22: [dihedral r22 :40@C :41@N :41@CA :41@C out assign.dat]
+	 [:40@C](1) [:41@N](1) [:41@CA](1) [:41@C](1)
+  23: [dihedral r23 :41@N :41@CA :41@C :42@N out assign.dat]
+	 [:41@N](1) [:41@CA](1) [:41@C](1) [:42@N](1)
+  24: [dihedral r24 :41@C :42@N :42@CA :42@C out assign.dat]
+	 [:41@C](1) [:42@N](1) [:42@CA](1) [:42@C](1)
+  25: [dihedral r25 :42@N :42@CA :42@C :43@N out assign.dat]
+	 [:42@N](1) [:42@CA](1) [:42@C](1) [:43@N](1)
+  26: [dihedral r26 :42@C :43@N :43@CA :43@C out assign.dat]
+	 [:42@C](1) [:43@N](1) [:43@CA](1) [:43@C](1)
+  27: [dihedral r27 :43@N :43@CA :43@C :44@N out assign.dat]
+	 [:43@N](1) [:43@CA](1) [:43@C](1) [:44@N](1)
+  28: [dihedral r28 :43@C :44@N :44@CA :44@C out assign.dat]
+	 [:43@C](1) [:44@N](1) [:44@CA](1) [:44@C](1)
+  29: [dihedral r29 :44@N :44@CA :44@C :45@N out assign.dat]
+	 [:44@N](1) [:44@CA](1) [:44@C](1) [:45@N](1)
+  30: [dihedral r30 :44@C :45@N :45@CA :45@C out assign.dat]
+	 [:44@C](1) [:45@N](1) [:45@CA](1) [:45@C](1)
+  31: [distance r31 :1@Pb :113@C3 noimage out assign.dat]
+	:1@Pb (1 atoms) to :113@C3 (1 atoms), imaging off.
+  32: [angle r32 :2@Pb :1@Pb :113@C3 out assign.dat]
+	 [:2@Pb](1) [:1@Pb](1) [:113@C3](1)
+  33: [dihedral r33 :3@Pb :2@Pb :1@Pb :113@C3 out assign.dat]
+	 [:3@Pb](1) [:2@Pb](1) [:1@Pb](1) [:113@C3](1)
+  34: [angle r34 :1@Pb :113@C3 :113@C9 out assign.dat]
+	 [:1@Pb](1) [:113@C3](1) [:113@C9](1)
+  35: [dihedral r35 :2@Pb :1@Pb :113@C3 :113@C9 out assign.dat]
+	 [:2@Pb](1) [:1@Pb](1) [:113@C3](1) [:113@C9](1)
+  36: [dihedral r36 :1@Pb :113@C3 :113@C9 :113@C11 out assign.dat]
+	 [:1@Pb](1) [:113@C3](1) [:113@C9](1) [:113@C11](1)
+  37: [distance r37 :113@C3 :113@C9 noimage out assign.dat]
+	:113@C3 (1 atoms) to :113@C9 (1 atoms), imaging off.
+  38: [distance r38 :113@C9 :113@C11 noimage out assign.dat]
+	:113@C9 (1 atoms) to :113@C11 (1 atoms), imaging off.
+  39: [distance r39 :113@C11 :113@C3 noimage out assign.dat]
+	:113@C11 (1 atoms) to :113@C3 (1 atoms), imaging off.
+  40: [dihedral r40 :113@C5 :113@C10 :113@C9 :113@C8 out assign.dat]
+	 [:113@C5](1) [:113@C10](1) [:113@C9](1) [:113@C8](1)
+  41: [dihedral r41 :113@C4 :113@C5 :113@C6 :113@C7 out assign.dat]
+	 [:113@C4](1) [:113@C5](1) [:113@C6](1) [:113@C7](1)
+  42: [dihedral r42 :113@C7 :113@C8 :113@C9 :113@C10 out assign.dat]
+	 [:113@C7](1) [:113@C8](1) [:113@C9](1) [:113@C10](1)
+  43: [dihedral r43 :113@C6 :113@C7 :113@C8 :113@C9 out assign.dat]
+	 [:113@C6](1) [:113@C7](1) [:113@C8](1) [:113@C9](1)
+  44: [dihedral r44 :113@C5 :113@C6 :113@C7 :113@C8 out assign.dat]
+	 [:113@C5](1) [:113@C6](1) [:113@C7](1) [:113@C8](1)
+  45: [dihedral r45 :113@C4 :113@C :113@N2 :113@C11 out assign.dat]
+	 [:113@C4](1) [:113@C](1) [:113@N2](1) [:113@C11](1)
+  46: [dihedral r46 :113@C4 :113@C5 :113@C10 :113@C9 out assign.dat]
+	 [:113@C4](1) [:113@C5](1) [:113@C10](1) [:113@C9](1)
+  47: [dihedral r47 :113@C4 :113@C :113@C1 :113@C2 out assign.dat]
+	 [:113@C4](1) [:113@C](1) [:113@C1](1) [:113@C2](1)
+  48: [dihedral r48 :113@C2 :113@N :113@N1 :113@C4 out assign.dat]
+	 [:113@C2](1) [:113@N](1) [:113@N1](1) [:113@C4](1)
+  49: [dihedral r49 :113@C1 :113@C :113@C4 :113@C5 out assign.dat]
+	 [:113@C1](1) [:113@C](1) [:113@C4](1) [:113@C5](1)
+  50: [dihedral r50 :113@C1 :113@C2 :113@N :113@C3 out assign.dat]
+	 [:113@C1](1) [:113@C2](1) [:113@N](1) [:113@C3](1)
+  51: [dihedral r51 :113@C :113@C1 :113@C2 :113@O out assign.dat]
+	 [:113@C](1) [:113@C1](1) [:113@C2](1) [:113@O](1)
+  52: [dihedral r52 :113@C :113@C4 :113@N1 :113@N out assign.dat]
+	 [:113@C](1) [:113@C4](1) [:113@N1](1) [:113@N](1)
+  53: [dihedral r53 :113@C :113@C4 :113@C5 :113@C10 out assign.dat]
+	 [:113@C](1) [:113@C4](1) [:113@C5](1) [:113@C10](1)
+----- full.inpcrd (1-1, 1) -----
+100% Complete.
+
+Read 1 frames and processed 1 frames.
+TIME: Avg. throughput= 21.4795 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (54 total):
+	r0 "r0" (double, distance), size is 1 (0.008 kB)
+	r1 "r1" (double, angle), size is 1 (0.008 kB)
+	r2 "r2" (double, torsion), size is 1 (0.008 kB)
+	r3 "r3" (double, angle), size is 1 (0.008 kB)
+	r4 "r4" (double, torsion), size is 1 (0.008 kB)
+	r5 "r5" (double, torsion), size is 1 (0.008 kB)
+	r6 "r6" (double, distance), size is 1 (0.008 kB)
+	r7 "r7" (double, distance), size is 1 (0.008 kB)
+	r8 "r8" (double, distance), size is 1 (0.008 kB)
+	r9 "r9" (double, torsion), size is 1 (0.008 kB)
+	r10 "r10" (double, torsion), size is 1 (0.008 kB)
+	r11 "r11" (double, torsion), size is 1 (0.008 kB)
+	r12 "r12" (double, torsion), size is 1 (0.008 kB)
+	r13 "r13" (double, torsion), size is 1 (0.008 kB)
+	r14 "r14" (double, torsion), size is 1 (0.008 kB)
+	r15 "r15" (double, torsion), size is 1 (0.008 kB)
+	r16 "r16" (double, torsion), size is 1 (0.008 kB)
+	r17 "r17" (double, torsion), size is 1 (0.008 kB)
+	r18 "r18" (double, torsion), size is 1 (0.008 kB)
+	r19 "r19" (double, torsion), size is 1 (0.008 kB)
+	r20 "r20" (double, torsion), size is 1 (0.008 kB)
+	r21 "r21" (double, torsion), size is 1 (0.008 kB)
+	r22 "r22" (double, torsion), size is 1 (0.008 kB)
+	r23 "r23" (double, torsion), size is 1 (0.008 kB)
+	r24 "r24" (double, torsion), size is 1 (0.008 kB)
+	r25 "r25" (double, torsion), size is 1 (0.008 kB)
+	r26 "r26" (double, torsion), size is 1 (0.008 kB)
+	r27 "r27" (double, torsion), size is 1 (0.008 kB)
+	r28 "r28" (double, torsion), size is 1 (0.008 kB)
+	r29 "r29" (double, torsion), size is 1 (0.008 kB)
+	r30 "r30" (double, torsion), size is 1 (0.008 kB)
+	r31 "r31" (double, distance), size is 1 (0.008 kB)
+	r32 "r32" (double, angle), size is 1 (0.008 kB)
+	r33 "r33" (double, torsion), size is 1 (0.008 kB)
+	r34 "r34" (double, angle), size is 1 (0.008 kB)
+	r35 "r35" (double, torsion), size is 1 (0.008 kB)
+	r36 "r36" (double, torsion), size is 1 (0.008 kB)
+	r37 "r37" (double, distance), size is 1 (0.008 kB)
+	r38 "r38" (double, distance), size is 1 (0.008 kB)
+	r39 "r39" (double, distance), size is 1 (0.008 kB)
+	r40 "r40" (double, torsion), size is 1 (0.008 kB)
+	r41 "r41" (double, torsion), size is 1 (0.008 kB)
+	r42 "r42" (double, torsion), size is 1 (0.008 kB)
+	r43 "r43" (double, torsion), size is 1 (0.008 kB)
+	r44 "r44" (double, torsion), size is 1 (0.008 kB)
+	r45 "r45" (double, torsion), size is 1 (0.008 kB)
+	r46 "r46" (double, torsion), size is 1 (0.008 kB)
+	r47 "r47" (double, torsion), size is 1 (0.008 kB)
+	r48 "r48" (double, torsion), size is 1 (0.008 kB)
+	r49 "r49" (double, torsion), size is 1 (0.008 kB)
+	r50 "r50" (double, torsion), size is 1 (0.008 kB)
+	r51 "r51" (double, torsion), size is 1 (0.008 kB)
+	r52 "r52" (double, torsion), size is 1 (0.008 kB)
+	r53 "r53" (double, torsion), size is 1 (0.008 kB)
+    Total data set memory usage is at least 0.432 kB
+
+DATAFILES (1 total):
+  assign.dat (Standard Data File):  r0 r1 r2 r3 ... r50 r51 r52 r53
+
+RUN TIMING:
+TIME:		Init               : 0.0000 s (  0.02%)
+TIME:		Trajectory Process : 0.0466 s ( 89.07%)
+TIME:		Action Post        : 0.0000 s (  0.01%)
+TIME:		Analysis           : 0.0000 s (  0.01%)
+TIME:		Data File Write    : 0.0056 s ( 10.80%)
+TIME:		Other              : 0.0000 s (  0.00%)
+TIME:	Run Total 0.0523 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 0.1532 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+
