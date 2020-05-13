@@ -1,0 +1,80 @@
+-I: Adding /home/amber18/dat/leap/prep to search path.
+-I: Adding /home/amber18/dat/leap/lib to search path.
+-I: Adding /home/amber18/dat/leap/parm to search path.
+-I: Adding /home/amber18/dat/leap/cmd to search path.
+-s: Ignoring startup file: leaprc
+-f: Source tmp_tleap.in.
+
+Welcome to LEaP!
+Sourcing: ./tmp_tleap.in
+----- Source: /home/amber18/dat/leap/cmd/leaprc.protein.ff14SB
+----- Source of /home/amber18/dat/leap/cmd/leaprc.protein.ff14SB done
+Log file: ./leap.log
+Loading parameters: /home/amber18/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.ff14SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff14SB protein backbone and sidechain parameters
+Loading library: /home/amber18/dat/leap/lib/amino12.lib
+Loading library: /home/amber18/dat/leap/lib/aminoct12.lib
+Loading library: /home/amber18/dat/leap/lib/aminont12.lib
+----- Source: /home/amber18/dat/leap/cmd/leaprc.gaff
+----- Source of /home/amber18/dat/leap/cmd/leaprc.gaff done
+Log file: ./leap.log
+Loading parameters: /home/amber18/dat/leap/parm/gaff.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 1.81, May 2017)
+Loading parameters: ./dum.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Parameters for a "Lead-like" Dummy Atom
+Loading Mol2 file: ./dum.mol2
+Reading MOLECULE named DUM
+Loading parameters: ./lig.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ./lig.mol2
+Reading MOLECULE named LIG
+Loading PDB file: ./build.pdb
+  total atoms in file: 925
+  Leap added 877 missing atoms according to residue templates:
+       877 H / lone pairs
+----- Source: /home/amber18/dat/leap/cmd/leaprc.water.tip3p
+----- Source of /home/amber18/dat/leap/cmd/leaprc.water.tip3p done
+Loading library: /home/amber18/dat/leap/lib/atomic_ions.lib
+Loading library: /home/amber18/dat/leap/lib/solvents.lib
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+This is the additional/replacement parameter set for TIP3P water
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+ (using default radius 1.500000 for Pb)
+ (using default radius 1.500000 for Pb)
+ (using default radius 1.500000 for Pb)
+  Solute vdw bounding box:              40.348 35.416 49.341
+  Total bounding box for atom centers:  64.348 59.416 116.967
+  Solvent unit box:                     18.774 18.774 18.774
+ (using default radius 1.500000 for Pb)
+ (using default radius 1.500000 for Pb)
+ (using default radius 1.500000 for Pb)
+  Total vdw box size:                   67.185 62.546 119.755 angstroms.
+  Volume: 503231.374 A^3 
+  Total mass 249118.346 amu,  Density 0.822 g/cc
+  Added 13071 residues.
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 0; Notes = 0.

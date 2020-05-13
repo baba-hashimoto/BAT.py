@@ -1,0 +1,18 @@
+# Anchor atoms  :58@CA  :79@CA  :105@CA  :113@C3  :113@C9  :113@C11  stage = prep  
+noexitonerror
+parm vac.prmtop
+trajin md02.nc
+trajin md03.nc
+trajin md04.nc
+trajin md05.nc
+trajin md06.nc
+trajin md07.nc
+trajin md08.nc
+trajin md09.nc
+trajin md10.nc
+distance d31 :1@Pb :113@C3 noimage out restraints.dat
+angle a32 :2@Pb :1@Pb :113@C3 out restraints.dat
+dihedral a33 :3@Pb :2@Pb :1@Pb :113@C3 out restraints.dat
+angle a34 :1@Pb :113@C3 :113@C9 out restraints.dat
+dihedral a35 :2@Pb :1@Pb :113@C3 :113@C9 out restraints.dat
+dihedral a36 :1@Pb :113@C3 :113@C9 :113@C11 out restraints.dat
