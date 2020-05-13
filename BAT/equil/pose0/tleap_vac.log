@@ -1,0 +1,93 @@
+-I: Adding /home/amber18/dat/leap/prep to search path.
+-I: Adding /home/amber18/dat/leap/lib to search path.
+-I: Adding /home/amber18/dat/leap/parm to search path.
+-I: Adding /home/amber18/dat/leap/cmd to search path.
+-s: Ignoring startup file: leaprc
+-f: Source tleap_vac.in.
+
+Welcome to LEaP!
+Sourcing: ./tleap_vac.in
+----- Source: /home/amber18/dat/leap/cmd/leaprc.protein.ff14SB
+----- Source of /home/amber18/dat/leap/cmd/leaprc.protein.ff14SB done
+Log file: ./leap.log
+Loading parameters: /home/amber18/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+Loading parameters: /home/amber18/dat/leap/parm/frcmod.ff14SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff14SB protein backbone and sidechain parameters
+Loading library: /home/amber18/dat/leap/lib/amino12.lib
+Loading library: /home/amber18/dat/leap/lib/aminoct12.lib
+Loading library: /home/amber18/dat/leap/lib/aminont12.lib
+----- Source: /home/amber18/dat/leap/cmd/leaprc.gaff
+----- Source of /home/amber18/dat/leap/cmd/leaprc.gaff done
+Log file: ./leap.log
+Loading parameters: /home/amber18/dat/leap/parm/gaff.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 1.81, May 2017)
+Loading parameters: ./dum.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Parameters for a "Lead-like" Dummy Atom
+Loading Mol2 file: ./dum.mol2
+Reading MOLECULE named DUM
+Loading parameters: ./lig.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ./lig.mol2
+Reading MOLECULE named LIG
+Loading PDB file: ./build.pdb
+  Added missing heavy atom: .R<CMET 112>.A<OXT 18>
+  total atoms in file: 924
+  Leap added 878 missing atoms according to residue templates:
+       1 Heavy
+       877 H / lone pairs
+Checking 'model'....
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.219539 angstroms between .R<DUM 3>.A<Pb 1> and .R<LIG 113>.A<O 4>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.262347 angstroms between .R<CYS 11>.A<HG 9> and .R<CMET 112>.A<HB2 6>
+
+/home/amber18/bin/teLeap: Warning!
+Close contact of 1.380669 angstroms between .R<HID 24>.A<HD1 10> and .R<TYR 27>.A<HH 15>
+Checking parameters for unit 'model'.
+Checking for bond parameters.
+Checking for angle parameters.
+check:  Warnings: 3
+Unit is OK.
+Writing pdb file: vac.pdb
+
+/home/amber18/bin/teLeap: Warning!
+ Converting N-terminal residue name to PDB format: NSER -> SER
+
+/home/amber18/bin/teLeap: Warning!
+ Converting C-terminal residue name to PDB format: CMET -> MET
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 374 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CMET	1
+	LIG	1
+	NSER	1
+  )
+ (no restraints)
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 5; Notes = 0.
