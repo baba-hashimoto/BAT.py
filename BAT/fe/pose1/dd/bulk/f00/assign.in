@@ -1,0 +1,20 @@
+# Anchor atoms  :58@CA  :79@CA  :105@CA  :1@C3  :1@C9  :1@C11
+parm full.hmr.prmtop
+trajin full.inpcrd
+distance r0 :1@C3 :1@C9 noimage out assign.dat
+distance r1 :1@C9 :1@C11 noimage out assign.dat
+distance r2 :1@C11 :1@C3 noimage out assign.dat
+dihedral r6 :1@C5 :1@C10 :1@C9 :1@C8 out assign.dat
+dihedral r7 :1@C4 :1@C5 :1@C6 :1@C7 out assign.dat
+dihedral r18 :1@C7 :1@C8 :1@C9 :1@C10 out assign.dat
+dihedral r19 :1@C6 :1@C7 :1@C8 :1@C9 out assign.dat
+dihedral r20 :1@C5 :1@C6 :1@C7 :1@C8 out assign.dat
+dihedral r21 :1@C4 :1@C :1@N2 :1@C11 out assign.dat
+dihedral r22 :1@C4 :1@C5 :1@C10 :1@C9 out assign.dat
+dihedral r26 :1@C4 :1@C :1@C1 :1@C2 out assign.dat
+dihedral r27 :1@C2 :1@N :1@N1 :1@C4 out assign.dat
+dihedral r28 :1@C1 :1@C :1@C4 :1@C5 out assign.dat
+dihedral r29 :1@C1 :1@C2 :1@N :1@C3 out assign.dat
+dihedral r30 :1@C :1@C1 :1@C2 :1@O out assign.dat
+dihedral r31 :1@C :1@C4 :1@N1 :1@N out assign.dat
+dihedral r32 :1@C :1@C4 :1@C5 :1@C10 out assign.dat

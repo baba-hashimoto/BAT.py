@@ -1,0 +1,2245 @@
+
+          -------------------------------------------------------
+          Amber 20 PMEMD                              2020
+          -------------------------------------------------------
+
+| PMEMD implementation of SANDER, Release 18
+
+|  Compiled date/time: Tue Apr 28 10:19:54 2020
+| Run on 05/10/2020 at 21:48:19
+
+|   Executable path: pmemd.cuda
+| Working directory: /home1/tbaba/centos/BAT.py-master/BAT/fe/pose1/dd/bulk/f00
+|          Hostname: tx1
+
+  [-O]verwriting output
+
+File Assignments:
+|   MDIN: heat.in                                                               
+|  MDOUT: md-heat.out                                                           
+| INPCRD: full.inpcrd                                                           
+|   PARM: full.hmr.prmtop                                                       
+| RESTRT: md-heat.rst7                                                          
+|   REFC: full.inpcrd                                                           
+|  MDVEL: mdvel                                                                 
+|   MDEN: mden                                                                  
+|  MDCRD: md-heat.nc                                                            
+| MDINFO: mdinfo                                                                
+|  MDFRC: mdfrc                                                                 
+
+
+ Here is the input file:
+
+heating                                                                        
+ &cntrl                                                                        
+   imin = 0, nstlim = 50000, irest = 0, ntx = 1, dt = 0.004,                   
+   ntt = 1, temp0 = 298.15, tempi = 50.0, tautp = 1.0,                         
+   ntc = 2, ntf = 1,                                                           
+   ntb = 1,                                                                    
+   ioutfm = 1, iwrap = 1,                                                      
+   nmropt = 1,                                                                 
+   pencut = -1                                                                 
+   ntwe = 1000, ntwx = 1000, ntpr = 1000, ntwr = 5000,                         
+   icfe = 1, clambda = 0.00922,                                                
+   logdvdl = 0,                                                                
+   timask1 = ':1', timask2 = ':2',                                             
+   ifsc=0, crgmask = ':2',                                                     
+ /                                                                             
+                                                                               
+ &ewald                                                                        
+ /                                                                             
+                                                                               
+ &wt                                                                           
+   type='TEMP0',                                                               
+   istep1 = 0, istep2 = 30000,                                                 
+   value1 = 50.0, value2 = 298.15                                              
+ /                                                                             
+                                                                               
+ &wt type = 'END'                                                              
+ /                                                                             
+DISANG=disang.rest                                                             
+LISTOUT=POUT                                                                   
+                                                                               
+
+
+Note: ig = -1. Setting random seed to   189687 based on wallclock time in 
+      microseconds.
+| irandom = 1, using AMBER's internal random number generator (default).
+ 
+|--------------------- INFORMATION ----------------------
+| GPU (CUDA) Version of PMEMD in use: NVIDIA GPU IN USE.
+|                    Version 18.0.0
+| 
+|                      03/25/2018
+| 
+| Implementation by:
+|                    Ross C. Walker     (SDSC)
+|                    Scott Le Grand     (nVIDIA)
+| 
+| Version 18 performance extensions by:
+|                    David Cerutti     (Rutgers)
+| 
+| Precision model in use:
+|      [SPFP] - Single Precision Forces, 64-bit Fixed Point
+|               Accumulation. (Default)
+| 
+|--------------------------------------------------------
+ 
+|----------------- CITATION INFORMATION -----------------
+|
+|    When publishing work that utilized the CUDA version
+|    of AMBER, please cite the following in addition to
+|    the regular AMBER citations:
+|
+|  - Romelia Salomon-Ferrer; Andreas W. Goetz; Duncan
+|    Poole; Scott Le Grand; Ross C. Walker "Routine
+|    microsecond molecular dynamics simulations with
+|    AMBER - Part II: Particle Mesh Ewald", J. Chem.
+|    Theory Comput., 2013, 9 (9), pp3878-3888,
+|    DOI: 10.1021/ct400314y.
+|
+|  - Andreas W. Goetz; Mark J. Williamson; Dong Xu;
+|    Duncan Poole; Scott Le Grand; Ross C. Walker
+|    "Routine microsecond molecular dynamics simulations
+|    with AMBER - Part I: Generalized Born", J. Chem.
+|    Theory Comput., 2012, 8 (5), pp1542-1555.
+|
+|  - Scott Le Grand; Andreas W. Goetz; Ross C. Walker
+|    "SPFP: Speed without compromise - a mixed precision
+|    model for GPU accelerated molecular dynamics
+|    simulations.", Comp. Phys. Comm., 2013, 184
+|    pp374-380, DOI: 10.1016/j.cpc.2012.09.022
+|
+|    When publishing work that utilized the CUDA version
+|    of TI, BAR, MBAR or FEP please cite the following 
+|    publications in addition to the regular AMBER 
+|    GPU citations:
+|
+|  - Daniel J. Mermelstein; Charles Lin; Gard Nelson; 
+|    Rachael Kretsch; J. Andrew McCammon; Ross C. Walker
+|    "Fast and Flexible GPU Accelerated Binding 
+|    Free Energy Calculations within the AMBER Molecular
+|    Dynamics Package" J. Comp. Chem., 2018,
+|    DOI: 10.1002/jcc.25187
+|
+|  - Tai-Sung Lee; Yuan Hu; Brad Sherborne; Zhuyan Guo;
+|    Darrin M. York
+|    "Toward Fast and Accurate Binding Affinity Prediction with
+|    pmemdGTI: An Efficient Implementation of GPU-Accelerated
+|    Thermodynamic Integration"
+|    J. Chem. Theory Comput., 2017, 13 (7), 3077
+|
+|
+|--------------------------------------------------------
+ 
+|------------------- GPU DEVICE INFO --------------------
+|
+|            CUDA_VISIBLE_DEVICES: 2
+|   CUDA Capable Devices Detected:      1
+|           CUDA Device ID in use:      0
+|                CUDA Device Name: GeForce GTX TITAN X
+|     CUDA Device Global Mem Size:  12212 MB
+| CUDA Device Num Multiprocessors:     24
+|           CUDA Device Core Freq:   1.08 GHz
+|
+|--------------------------------------------------------
+ 
+ 
+| Conditional Compilation Defines Used:
+| PUBFFT
+| BINTRAJ
+| CUDA
+| EMIL
+
+| Largest sphere to fit in unit cell has radius =    20.088
+
+| New format PARM file being parsed.
+| Version =    1.000 Date = 04/28/20 Time = 18:40:30
+
+| Note: 1-4 EEL scale factors are being read from the topology file.
+
+| Note: 1-4 VDW scale factors are being read from the topology file.
+| Duplicated    0 dihedrals
+
+| Duplicated    0 dihedrals
+
+--------------------------------------------------------------------------------
+   1.  RESOURCE   USE: 
+--------------------------------------------------------------------------------
+
+ getting new box info from bottom of inpcrd
+ NATOM  =    5675 NTYPES =      11 NBONH =    5627 MBONA  =      34
+ NTHETH =      52 MTHETA =      46 NPHIH =      82 MPHIA  =      70
+ NHPARM =       0 NPARM  =       0 NNB   =    7766 NRES   =    1885
+ NBONA  =      34 NTHETA =      46 NPHIA =      70 NUMBND =      18
+ NUMANG =      25 NPTRA  =      11 NATYP =      16 NPHB   =       0
+ IFBOX  =       1 NMXRS  =      29 IFCAP =       0 NEXTRA =       0
+ NCOPY  =       0
+
+| Coordinate Index Table dimensions:     8    9    9
+| Direct force subcell size =     5.0220    4.8635    4.9243
+
+     BOX TYPE: RECTILINEAR
+
+--------------------------------------------------------------------------------
+   2.  CONTROL  DATA  FOR  THE  RUN
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+
+General flags:
+     imin    =       0, nmropt  =       1
+
+Nature and format of input:
+     ntx     =       1, irest   =       0, ntrx    =       1
+
+Nature and format of output:
+     ntxo    =       2, ntpr    =    1000, ntrx    =       1, ntwr    =    5000
+     iwrap   =       1, ntwx    =    1000, ntwv    =       0, ntwe    =    1000
+     ioutfm  =       1, ntwprt  =       0, idecomp =       0, rbornstat=      0
+
+Potential function:
+     ntf     =       1, ntb     =       1, igb     =       0, nsnb    =      25
+     ipol    =       0, gbsa    =       0, iesp    =       0
+     dielc   =   1.00000, cut     =   8.00000, intdiel =   1.00000
+
+Frozen or restrained atoms:
+     ibelly  =       0, ntr     =       0
+
+Molecular dynamics:
+     nstlim  =     50000, nscm    =      1000, nrespa  =         1
+     t       =   0.00000, dt      =   0.00400, vlimit  =  -1.00000
+
+Berendsen (weak-coupling) temperature regulation:
+     temp0   = 298.15000, tempi   =  50.00000, tautp   =   1.00000
+
+SHAKE:
+     ntc     =       2, jfastw  =       0
+     tol     =   0.00001
+
+NMR refinement options:
+     iscale  =       0, noeskp  =       1, ipnlty  =       1, mxsub   =       1
+     scalm   = 100.00000, pencut  =  -1.00000, tausw   =   0.10000
+
+Free energy options:
+     icfe    =       1, ifsc    =       0, klambda =       1
+     clambda =  0.0092, scalpha =  0.5000, scbeta  = 12.0000
+     sceeorder =       2
+     dynlmb =  0.0000 logdvdl =       0
+
+| Intermolecular bonds treatment:
+|     no_intermolecular_bonds =       1
+
+| Energy averages sample interval:
+|     ene_avg_sampling =    1000
+
+Ewald parameters:
+     verbose =       0, ew_type =       0, nbflag  =       1, use_pme =       1
+     vdwmeth =       1, eedmeth =       1, netfrc  =       1
+     Box X =   40.176   Box Y =   43.772   Box Z =   44.319
+     Alpha =   90.000   Beta  =   90.000   Gamma =   90.000
+     NFFT1 =   48       NFFT2 =   48       NFFT3 =   48
+     Cutoff=    8.000   Tol   =0.100E-04
+     Ewald Coefficient =  0.34864
+     Interpolation order =    4
+     TI Mask 1 :1; matches     29 atoms
+     TI Mask 2 :2; matches     29 atoms
+     TI region 1:    5646 atoms
+     TI region 2:    5646 atoms
+Removing charge of       0.1324 from atom      30
+Removing charge of      -0.3482 from atom      31
+Removing charge of       0.6867 from atom      32
+Removing charge of      -0.6325 from atom      33
+Removing charge of      -0.2038 from atom      34
+Removing charge of       0.0953 from atom      35
+Removing charge of      -0.3903 from atom      36
+Removing charge of       0.3402 from atom      37
+Removing charge of      -0.1179 from atom      38
+Removing charge of      -0.1090 from atom      39
+Removing charge of      -0.1345 from atom      40
+Removing charge of      -0.1210 from atom      41
+Removing charge of      -0.1345 from atom      42
+Removing charge of      -0.1090 from atom      43
+Removing charge of      -0.7500 from atom      44
+Removing charge of       0.1891 from atom      45
+Removing charge of       0.1660 from atom      46
+Removing charge of       0.0607 from atom      47
+Removing charge of       0.0607 from atom      48
+Removing charge of       0.0607 from atom      49
+Removing charge of       0.1440 from atom      50
+Removing charge of       0.1360 from atom      51
+Removing charge of       0.1340 from atom      52
+Removing charge of       0.1360 from atom      53
+Removing charge of       0.1440 from atom      54
+Removing charge of       0.4328 from atom      55
+Removing charge of       0.0440 from atom      56
+Removing charge of       0.0440 from atom      57
+Removing charge of       0.0440 from atom      58
+Total charge of  -0.00000100 removed from      29 atoms
+     Checking for mismatched coordinates.
+
+--------------------------------------------------------------------------------
+   3.  ATOMIC COORDINATES AND VELOCITIES
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+ begin time read from input coords =     0.000 ps
+
+
+
+           Begin reading energy term weight changes/NMR restraints
+ WEIGHT CHANGES:
+ TEMP0         0  30000   50.000000  298.150000      0      0
+
+ RESTRAINTS:
+ Requested file redirections:
+  DISANG    = disang.rest
+  LISTOUT   = POUT
+ Restraints will be read from file: disang.rest
+Here are comments from the DISANG input file:
+# Anchor atoms  :58@CA  :79@CA  :105@CA  :1@C3  :1@C9  :1@C11  stage = fe  weigh
+
+                       Number of restraints read =    17
+
+                  Done reading weight changes/NMR restraints
+
+
+ 
+ Number of triangulated 3-point waters found:     1867
+
+     Sum of charges for TI region  1 =  -0.00000100
+     Skip neutralizing charges...
+
+
+     Sum of charges for TI region  2 =  -0.00000000
+     Skip neutralizing charges...
+
+| Dynamic Memory, Types Used:
+| Reals              333897
+| Integers           235860
+
+| Nonbonded Pairs Initial Allocation:      947866
+
+| GPU memory information (estimate):
+| KB of GPU memory in use:     25153
+| KB of CPU memory in use:     14401
+
+--------------------------------------------------------------------------------
+   4.  RESULTS
+--------------------------------------------------------------------------------
+
+
+| TI region  1
+
+
+ NSTEP =        0   TIME(PS) =       0.000  TEMP(K) =    73.77  PRESS =     0.0
+ Etot   =    -14677.6235  EKtot   =       829.8451  EPtot      =    -15507.4686
+ BOND   =         3.4099  ANGLE   =        14.1339  DIHED      =        11.2064
+ 1-4 NB =        11.6030  1-4 EEL =        34.4316  VDWAALS    =      2061.8146
+ EELEC  =    -17644.0679  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ EAMBER (non-restraint)  =    -15507.4686
+ DV/DL  =       -30.9036
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -0.0000
+   Dist =     -0.0000  Angl =       0.0000  Tors =     -0.0000
+
+| TI region  2
+
+
+ NSTEP =        0   TIME(PS) =       0.000  TEMP(K) =    73.77  PRESS =     0.0
+ Etot   =    -14677.6235  EKtot   =       829.8451  EPtot      =    -15507.4686
+ BOND   =         3.4099  ANGLE   =        14.1339  DIHED      =        11.2064
+ 1-4 NB =        11.6030  1-4 EEL =        34.4316  VDWAALS    =      2061.8146
+ EELEC  =    -17644.0679  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ EAMBER (non-restraint)  =    -15507.4686
+ DV/DL  =       -30.9036
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -0.0000
+   Dist =     -0.0000  Angl =       0.0000  Tors =     -0.0000
+ NMR restraints: Bond =    0.000   Angle =     0.000   Torsion =     0.000
+===============================================================================
+check COM velocity, temp for TI region  1:       0.001036     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.001036     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     1000   TIME(PS) =       4.000  TEMP(K) =   120.64  PRESS =     0.0
+ Etot   =    -20790.0277  EKtot   =      1357.0099  EPtot      =    -22147.0376
+ BOND   =         2.6666  ANGLE   =         9.5777  DIHED      =         7.1466
+ 1-4 NB =         9.5332  1-4 EEL =        35.6875  VDWAALS    =      3939.6278
+ EELEC  =    -26157.4497  EHBOND  =         0.0000  RESTRAINT  =         6.1728
+ EAMBER (non-restraint)  =    -22153.2104
+ DV/DL  =         5.9351
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.2302
+   Dist =     -0.2085  Angl =       0.0000  Tors =     -6.0217
+
+| TI region  2
+
+
+ NSTEP =     1000   TIME(PS) =       4.000  TEMP(K) =   120.64  PRESS =     0.0
+ Etot   =    -20790.0277  EKtot   =      1357.0099  EPtot      =    -22147.0376
+ BOND   =         2.6666  ANGLE   =         9.5777  DIHED      =         7.1466
+ 1-4 NB =         9.5332  1-4 EEL =        35.6875  VDWAALS    =      3939.6278
+ EELEC  =    -26157.4497  EHBOND  =         0.0000  RESTRAINT  =         6.1728
+ EAMBER (non-restraint)  =    -22153.2104
+ DV/DL  =         5.9351
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.2302
+   Dist =     -0.2085  Angl =       0.0000  Tors =     -6.0217
+ NMR restraints: Bond =    0.207   Angle =     0.000   Torsion =     5.966
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     2000   TIME(PS) =       8.000  TEMP(K) =    74.81  PRESS =     0.0
+ Etot   =    -22031.9031  EKtot   =       841.5330  EPtot      =    -22873.4361
+ BOND   =         1.9250  ANGLE   =         8.0715  DIHED      =         7.9934
+ 1-4 NB =        10.2062  1-4 EEL =        35.0124  VDWAALS    =      4237.0352
+ EELEC  =    -27175.6586  EHBOND  =         0.0000  RESTRAINT  =         1.9787
+ EAMBER (non-restraint)  =    -22875.4149
+ DV/DL  =        13.2932
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -1.9971
+   Dist =     -0.0225  Angl =       0.0000  Tors =     -1.9746
+
+| TI region  2
+
+
+ NSTEP =     2000   TIME(PS) =       8.000  TEMP(K) =    74.81  PRESS =     0.0
+ Etot   =    -22031.9031  EKtot   =       841.5330  EPtot      =    -22873.4361
+ BOND   =         1.9250  ANGLE   =         8.0715  DIHED      =         7.9934
+ 1-4 NB =        10.2062  1-4 EEL =        35.0124  VDWAALS    =      4237.0352
+ EELEC  =    -27175.6586  EHBOND  =         0.0000  RESTRAINT  =         1.9787
+ EAMBER (non-restraint)  =    -22875.4149
+ DV/DL  =        13.2932
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -1.9971
+   Dist =     -0.0225  Angl =       0.0000  Tors =     -1.9746
+ NMR restraints: Bond =    0.022   Angle =     0.000   Torsion =     1.956
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     3000   TIME(PS) =      12.000  TEMP(K) =    73.08  PRESS =     0.0
+ Etot   =    -22102.9270  EKtot   =       822.0447  EPtot      =    -22924.9717
+ BOND   =         5.2844  ANGLE   =         7.9653  DIHED      =         8.4301
+ 1-4 NB =         9.1455  1-4 EEL =        36.8323  VDWAALS    =      4266.9904
+ EELEC  =    -27267.5514  EHBOND  =         0.0000  RESTRAINT  =         7.9317
+ EAMBER (non-restraint)  =    -22932.9033
+ DV/DL  =         5.6667
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.0055
+   Dist =     -0.2162  Angl =       0.0000  Tors =     -7.7892
+
+| TI region  2
+
+
+ NSTEP =     3000   TIME(PS) =      12.000  TEMP(K) =    73.08  PRESS =     0.0
+ Etot   =    -22102.9270  EKtot   =       822.0447  EPtot      =    -22924.9717
+ BOND   =         5.2844  ANGLE   =         7.9653  DIHED      =         8.4301
+ 1-4 NB =         9.1455  1-4 EEL =        36.8323  VDWAALS    =      4266.9904
+ EELEC  =    -27267.5514  EHBOND  =         0.0000  RESTRAINT  =         7.9317
+ EAMBER (non-restraint)  =    -22932.9033
+ DV/DL  =         5.6667
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.0055
+   Dist =     -0.2162  Angl =       0.0000  Tors =     -7.7892
+ NMR restraints: Bond =    0.214   Angle =     0.000   Torsion =     7.717
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     4000   TIME(PS) =      16.000  TEMP(K) =    81.56  PRESS =     0.0
+ Etot   =    -21963.6491  EKtot   =       917.3836  EPtot      =    -22881.0327
+ BOND   =         5.0304  ANGLE   =        10.3754  DIHED      =        11.1331
+ 1-4 NB =        10.6862  1-4 EEL =        36.5674  VDWAALS    =      4280.6920
+ EELEC  =    -27249.1831  EHBOND  =         0.0000  RESTRAINT  =        13.6659
+ EAMBER (non-restraint)  =    -22894.6987
+ DV/DL  =        -3.6113
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -13.7931
+   Dist =     -0.3323  Angl =       0.0000  Tors =    -13.4609
+
+| TI region  2
+
+
+ NSTEP =     4000   TIME(PS) =      16.000  TEMP(K) =    81.56  PRESS =     0.0
+ Etot   =    -21963.6491  EKtot   =       917.3836  EPtot      =    -22881.0327
+ BOND   =         5.0304  ANGLE   =        10.3754  DIHED      =        11.1331
+ 1-4 NB =        10.6862  1-4 EEL =        36.5674  VDWAALS    =      4280.6920
+ EELEC  =    -27249.1831  EHBOND  =         0.0000  RESTRAINT  =        13.6659
+ EAMBER (non-restraint)  =    -22894.6987
+ DV/DL  =        -3.6113
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -13.7931
+   Dist =     -0.3323  Angl =       0.0000  Tors =    -13.4609
+ NMR restraints: Bond =    0.329   Angle =     0.000   Torsion =    13.337
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     5000   TIME(PS) =      20.000  TEMP(K) =    87.41  PRESS =     0.0
+ Etot   =    -21791.8733  EKtot   =       983.1879  EPtot      =    -22775.0612
+ BOND   =        16.7734  ANGLE   =        13.6785  DIHED      =        10.4770
+ 1-4 NB =         8.8913  1-4 EEL =        34.3152  VDWAALS    =      4262.5786
+ EELEC  =    -27129.6160  EHBOND  =         0.0000  RESTRAINT  =         7.8408
+ EAMBER (non-restraint)  =    -22782.9020
+ DV/DL  =         2.4022
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.9138
+   Dist =     -0.0386  Angl =       0.0000  Tors =     -7.8752
+
+| TI region  2
+
+
+ NSTEP =     5000   TIME(PS) =      20.000  TEMP(K) =    87.41  PRESS =     0.0
+ Etot   =    -21791.8733  EKtot   =       983.1879  EPtot      =    -22775.0612
+ BOND   =        16.7734  ANGLE   =        13.6785  DIHED      =        10.4770
+ 1-4 NB =         8.8913  1-4 EEL =        34.3152  VDWAALS    =      4262.5786
+ EELEC  =    -27129.6160  EHBOND  =         0.0000  RESTRAINT  =         7.8408
+ EAMBER (non-restraint)  =    -22782.9020
+ DV/DL  =         2.4022
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.9138
+   Dist =     -0.0386  Angl =       0.0000  Tors =     -7.8752
+ NMR restraints: Bond =    0.038   Angle =     0.000   Torsion =     7.803
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     6000   TIME(PS) =      24.000  TEMP(K) =    96.04  PRESS =     0.0
+ Etot   =    -21624.2238  EKtot   =      1080.3607  EPtot      =    -22704.5844
+ BOND   =        14.3494  ANGLE   =        14.2444  DIHED      =        12.4825
+ 1-4 NB =        10.5277  1-4 EEL =        38.0147  VDWAALS    =      4168.4180
+ EELEC  =    -26972.3587  EHBOND  =         0.0000  RESTRAINT  =         9.7376
+ EAMBER (non-restraint)  =    -22714.3221
+ DV/DL  =         1.9444
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.8282
+   Dist =     -0.1256  Angl =       0.0000  Tors =     -9.7026
+
+| TI region  2
+
+
+ NSTEP =     6000   TIME(PS) =      24.000  TEMP(K) =    96.04  PRESS =     0.0
+ Etot   =    -21624.2238  EKtot   =      1080.3607  EPtot      =    -22704.5844
+ BOND   =        14.3494  ANGLE   =        14.2444  DIHED      =        12.4825
+ 1-4 NB =        10.5277  1-4 EEL =        38.0147  VDWAALS    =      4168.4180
+ EELEC  =    -26972.3587  EHBOND  =         0.0000  RESTRAINT  =         9.7376
+ EAMBER (non-restraint)  =    -22714.3221
+ DV/DL  =         1.9444
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.8282
+   Dist =     -0.1256  Angl =       0.0000  Tors =     -9.7026
+ NMR restraints: Bond =    0.124   Angle =     0.000   Torsion =     9.613
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     7000   TIME(PS) =      28.000  TEMP(K) =   103.33  PRESS =     0.0
+ Etot   =    -21444.6468  EKtot   =      1162.3621  EPtot      =    -22607.0089
+ BOND   =        12.8589  ANGLE   =        17.8122  DIHED      =         8.7457
+ 1-4 NB =         9.8626  1-4 EEL =        34.9316  VDWAALS    =      4170.0970
+ EELEC  =    -26867.6632  EHBOND  =         0.0000  RESTRAINT  =         6.3462
+ EAMBER (non-restraint)  =    -22613.3551
+ DV/DL  =        10.0235
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.4053
+   Dist =     -0.0334  Angl =       0.0000  Tors =     -6.3719
+
+| TI region  2
+
+
+ NSTEP =     7000   TIME(PS) =      28.000  TEMP(K) =   103.33  PRESS =     0.0
+ Etot   =    -21444.6468  EKtot   =      1162.3621  EPtot      =    -22607.0089
+ BOND   =        12.8589  ANGLE   =        17.8122  DIHED      =         8.7457
+ 1-4 NB =         9.8626  1-4 EEL =        34.9316  VDWAALS    =      4170.0970
+ EELEC  =    -26867.6632  EHBOND  =         0.0000  RESTRAINT  =         6.3462
+ EAMBER (non-restraint)  =    -22613.3551
+ DV/DL  =        10.0235
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.4053
+   Dist =     -0.0334  Angl =       0.0000  Tors =     -6.3719
+ NMR restraints: Bond =    0.033   Angle =     0.000   Torsion =     6.313
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     8000   TIME(PS) =      32.000  TEMP(K) =   114.82  PRESS =     0.0
+ Etot   =    -21255.8773  EKtot   =      1291.6008  EPtot      =    -22547.4782
+ BOND   =        16.8070  ANGLE   =        16.9042  DIHED      =         9.2653
+ 1-4 NB =        11.4945  1-4 EEL =        36.7989  VDWAALS    =      4133.0061
+ EELEC  =    -26777.4800  EHBOND  =         0.0000  RESTRAINT  =         5.7259
+ EAMBER (non-restraint)  =    -22553.2041
+ DV/DL  =         7.4851
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -5.7792
+   Dist =     -0.0386  Angl =       0.0000  Tors =     -5.7406
+
+| TI region  2
+
+
+ NSTEP =     8000   TIME(PS) =      32.000  TEMP(K) =   114.82  PRESS =     0.0
+ Etot   =    -21255.8773  EKtot   =      1291.6008  EPtot      =    -22547.4782
+ BOND   =        16.8070  ANGLE   =        16.9042  DIHED      =         9.2653
+ 1-4 NB =        11.4945  1-4 EEL =        36.7989  VDWAALS    =      4133.0061
+ EELEC  =    -26777.4800  EHBOND  =         0.0000  RESTRAINT  =         5.7259
+ EAMBER (non-restraint)  =    -22553.2041
+ DV/DL  =         7.4851
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -5.7792
+   Dist =     -0.0386  Angl =       0.0000  Tors =     -5.7406
+ NMR restraints: Bond =    0.038   Angle =     0.000   Torsion =     5.688
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =     9000   TIME(PS) =      36.000  TEMP(K) =   121.60  PRESS =     0.0
+ Etot   =    -21062.6648  EKtot   =      1367.8150  EPtot      =    -22430.4798
+ BOND   =        18.0280  ANGLE   =        18.1161  DIHED      =         9.8013
+ 1-4 NB =        10.1713  1-4 EEL =        35.6853  VDWAALS    =      4166.4868
+ EELEC  =    -26698.2985  EHBOND  =         0.0000  RESTRAINT  =         9.5300
+ EAMBER (non-restraint)  =    -22440.0098
+ DV/DL  =         3.6536
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.6187
+   Dist =     -0.1316  Angl =       0.0000  Tors =     -9.4870
+
+| TI region  2
+
+
+ NSTEP =     9000   TIME(PS) =      36.000  TEMP(K) =   121.60  PRESS =     0.0
+ Etot   =    -21062.6648  EKtot   =      1367.8150  EPtot      =    -22430.4798
+ BOND   =        18.0280  ANGLE   =        18.1161  DIHED      =         9.8013
+ 1-4 NB =        10.1713  1-4 EEL =        35.6853  VDWAALS    =      4166.4868
+ EELEC  =    -26698.2985  EHBOND  =         0.0000  RESTRAINT  =         9.5300
+ EAMBER (non-restraint)  =    -22440.0098
+ DV/DL  =         3.6536
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.6187
+   Dist =     -0.1316  Angl =       0.0000  Tors =     -9.4870
+ NMR restraints: Bond =    0.130   Angle =     0.000   Torsion =     9.400
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    10000   TIME(PS) =      40.000  TEMP(K) =   129.94  PRESS =     0.0
+ Etot   =    -20875.5378  EKtot   =      1461.6093  EPtot      =    -22337.1471
+ BOND   =        17.5854  ANGLE   =        19.9875  DIHED      =        12.4490
+ 1-4 NB =        11.0536  1-4 EEL =        35.1172  VDWAALS    =      4076.5509
+ EELEC  =    -26518.4115  EHBOND  =         0.0000  RESTRAINT  =         8.5210
+ EAMBER (non-restraint)  =    -22345.6681
+ DV/DL  =         4.1438
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.6003
+   Dist =     -0.0256  Angl =       0.0000  Tors =     -8.5747
+
+| TI region  2
+
+
+ NSTEP =    10000   TIME(PS) =      40.000  TEMP(K) =   129.94  PRESS =     0.0
+ Etot   =    -20875.5378  EKtot   =      1461.6093  EPtot      =    -22337.1471
+ BOND   =        17.5854  ANGLE   =        19.9875  DIHED      =        12.4490
+ 1-4 NB =        11.0536  1-4 EEL =        35.1172  VDWAALS    =      4076.5509
+ EELEC  =    -26518.4115  EHBOND  =         0.0000  RESTRAINT  =         8.5210
+ EAMBER (non-restraint)  =    -22345.6681
+ DV/DL  =         4.1438
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.6003
+   Dist =     -0.0256  Angl =       0.0000  Tors =     -8.5747
+ NMR restraints: Bond =    0.025   Angle =     0.000   Torsion =     8.496
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    11000   TIME(PS) =      44.000  TEMP(K) =   136.11  PRESS =     0.0
+ Etot   =    -20665.4262  EKtot   =      1531.0034  EPtot      =    -22196.4296
+ BOND   =        14.8306  ANGLE   =        18.3839  DIHED      =        12.5748
+ 1-4 NB =        11.0263  1-4 EEL =        33.9606  VDWAALS    =      4048.9138
+ EELEC  =    -26344.7276  EHBOND  =         0.0000  RESTRAINT  =         8.6079
+ EAMBER (non-restraint)  =    -22205.0375
+ DV/DL  =        -2.7931
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.6880
+   Dist =     -0.4939  Angl =       0.0000  Tors =     -8.1941
+
+| TI region  2
+
+
+ NSTEP =    11000   TIME(PS) =      44.000  TEMP(K) =   136.11  PRESS =     0.0
+ Etot   =    -20665.4262  EKtot   =      1531.0034  EPtot      =    -22196.4296
+ BOND   =        14.8306  ANGLE   =        18.3839  DIHED      =        12.5748
+ 1-4 NB =        11.0263  1-4 EEL =        33.9606  VDWAALS    =      4048.9138
+ EELEC  =    -26344.7276  EHBOND  =         0.0000  RESTRAINT  =         8.6079
+ EAMBER (non-restraint)  =    -22205.0375
+ DV/DL  =        -2.7931
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.6880
+   Dist =     -0.4939  Angl =       0.0000  Tors =     -8.1941
+ NMR restraints: Bond =    0.489   Angle =     0.000   Torsion =     8.119
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    12000   TIME(PS) =      48.000  TEMP(K) =   149.73  PRESS =     0.0
+ Etot   =    -20490.2305  EKtot   =      1684.2558  EPtot      =    -22174.4863
+ BOND   =        17.3532  ANGLE   =        22.5904  DIHED      =         7.7265
+ 1-4 NB =        12.5370  1-4 EEL =        34.1180  VDWAALS    =      3916.1828
+ EELEC  =    -26195.0531  EHBOND  =         0.0000  RESTRAINT  =        10.0588
+ EAMBER (non-restraint)  =    -22184.5452
+ DV/DL  =         0.3953
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.1524
+   Dist =     -0.1505  Angl =       0.0000  Tors =    -10.0020
+
+| TI region  2
+
+
+ NSTEP =    12000   TIME(PS) =      48.000  TEMP(K) =   149.73  PRESS =     0.0
+ Etot   =    -20490.2305  EKtot   =      1684.2558  EPtot      =    -22174.4863
+ BOND   =        17.3532  ANGLE   =        22.5904  DIHED      =         7.7265
+ 1-4 NB =        12.5370  1-4 EEL =        34.1180  VDWAALS    =      3916.1828
+ EELEC  =    -26195.0531  EHBOND  =         0.0000  RESTRAINT  =        10.0588
+ EAMBER (non-restraint)  =    -22184.5452
+ DV/DL  =         0.3953
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.1524
+   Dist =     -0.1505  Angl =       0.0000  Tors =    -10.0020
+ NMR restraints: Bond =    0.149   Angle =     0.000   Torsion =     9.910
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    13000   TIME(PS) =      52.000  TEMP(K) =   154.68  PRESS =     0.0
+ Etot   =    -20297.4319  EKtot   =      1739.8983  EPtot      =    -22037.3302
+ BOND   =        13.6782  ANGLE   =        17.0810  DIHED      =        16.8421
+ 1-4 NB =        11.0280  1-4 EEL =        35.7486  VDWAALS    =      3962.3118
+ EELEC  =    -26098.4314  EHBOND  =         0.0000  RESTRAINT  =         4.4116
+ EAMBER (non-restraint)  =    -22041.7418
+ DV/DL  =        -0.4357
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -4.4526
+   Dist =     -0.0890  Angl =       0.0000  Tors =     -4.3636
+
+| TI region  2
+
+
+ NSTEP =    13000   TIME(PS) =      52.000  TEMP(K) =   154.68  PRESS =     0.0
+ Etot   =    -20297.4319  EKtot   =      1739.8983  EPtot      =    -22037.3302
+ BOND   =        13.6782  ANGLE   =        17.0810  DIHED      =        16.8421
+ 1-4 NB =        11.0280  1-4 EEL =        35.7486  VDWAALS    =      3962.3118
+ EELEC  =    -26098.4314  EHBOND  =         0.0000  RESTRAINT  =         4.4116
+ EAMBER (non-restraint)  =    -22041.7418
+ DV/DL  =        -0.4357
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -4.4526
+   Dist =     -0.0890  Angl =       0.0000  Tors =     -4.3636
+ NMR restraints: Bond =    0.088   Angle =     0.000   Torsion =     4.323
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    14000   TIME(PS) =      56.000  TEMP(K) =   162.91  PRESS =     0.0
+ Etot   =    -20072.9792  EKtot   =      1832.5131  EPtot      =    -21905.4924
+ BOND   =        21.6281  ANGLE   =        24.0669  DIHED      =        11.5545
+ 1-4 NB =         9.2967  1-4 EEL =        37.1233  VDWAALS    =      3893.3567
+ EELEC  =    -25905.3661  EHBOND  =         0.0000  RESTRAINT  =         2.8477
+ EAMBER (non-restraint)  =    -21908.3400
+ DV/DL  =         2.6957
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -2.8742
+   Dist =     -0.2103  Angl =       0.0000  Tors =     -2.6639
+
+| TI region  2
+
+
+ NSTEP =    14000   TIME(PS) =      56.000  TEMP(K) =   162.91  PRESS =     0.0
+ Etot   =    -20072.9792  EKtot   =      1832.5131  EPtot      =    -21905.4924
+ BOND   =        21.6281  ANGLE   =        24.0669  DIHED      =        11.5545
+ 1-4 NB =         9.2967  1-4 EEL =        37.1233  VDWAALS    =      3893.3567
+ EELEC  =    -25905.3661  EHBOND  =         0.0000  RESTRAINT  =         2.8477
+ EAMBER (non-restraint)  =    -21908.3400
+ DV/DL  =         2.6957
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -2.8742
+   Dist =     -0.2103  Angl =       0.0000  Tors =     -2.6639
+ NMR restraints: Bond =    0.208   Angle =     0.000   Torsion =     2.639
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    15000   TIME(PS) =      60.000  TEMP(K) =   168.22  PRESS =     0.0
+ Etot   =    -19875.1689  EKtot   =      1892.2452  EPtot      =    -21767.4141
+ BOND   =        12.8277  ANGLE   =        24.6769  DIHED      =        13.7937
+ 1-4 NB =         8.9862  1-4 EEL =        38.6400  VDWAALS    =      3980.8376
+ EELEC  =    -25854.0955  EHBOND  =         0.0000  RESTRAINT  =         6.9194
+ EAMBER (non-restraint)  =    -21774.3335
+ DV/DL  =        -5.9564
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.9838
+   Dist =     -0.6794  Angl =       0.0000  Tors =     -6.3044
+
+| TI region  2
+
+
+ NSTEP =    15000   TIME(PS) =      60.000  TEMP(K) =   168.22  PRESS =     0.0
+ Etot   =    -19875.1689  EKtot   =      1892.2452  EPtot      =    -21767.4141
+ BOND   =        12.8277  ANGLE   =        24.6769  DIHED      =        13.7937
+ 1-4 NB =         8.9862  1-4 EEL =        38.6400  VDWAALS    =      3980.8376
+ EELEC  =    -25854.0955  EHBOND  =         0.0000  RESTRAINT  =         6.9194
+ EAMBER (non-restraint)  =    -21774.3335
+ DV/DL  =        -5.9564
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.9838
+   Dist =     -0.6794  Angl =       0.0000  Tors =     -6.3044
+ NMR restraints: Bond =    0.673   Angle =     0.000   Torsion =     6.246
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    16000   TIME(PS) =      64.000  TEMP(K) =   179.97  PRESS =     0.0
+ Etot   =    -19658.8381  EKtot   =      2024.4227  EPtot      =    -21683.2608
+ BOND   =         8.3594  ANGLE   =        27.7700  DIHED      =        10.0025
+ 1-4 NB =        12.4158  1-4 EEL =        37.7783  VDWAALS    =      3798.4467
+ EELEC  =    -25585.8509  EHBOND  =         0.0000  RESTRAINT  =         7.8174
+ EAMBER (non-restraint)  =    -21691.0782
+ DV/DL  =         5.0598
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.8901
+   Dist =     -0.2233  Angl =       0.0000  Tors =     -7.6669
+
+| TI region  2
+
+
+ NSTEP =    16000   TIME(PS) =      64.000  TEMP(K) =   179.97  PRESS =     0.0
+ Etot   =    -19658.8381  EKtot   =      2024.4227  EPtot      =    -21683.2608
+ BOND   =         8.3594  ANGLE   =        27.7700  DIHED      =        10.0025
+ 1-4 NB =        12.4158  1-4 EEL =        37.7783  VDWAALS    =      3798.4467
+ EELEC  =    -25585.8509  EHBOND  =         0.0000  RESTRAINT  =         7.8174
+ EAMBER (non-restraint)  =    -21691.0782
+ DV/DL  =         5.0598
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.8901
+   Dist =     -0.2233  Angl =       0.0000  Tors =     -7.6669
+ NMR restraints: Bond =    0.221   Angle =     0.000   Torsion =     7.596
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    17000   TIME(PS) =      68.000  TEMP(K) =   187.48  PRESS =     0.0
+ Etot   =    -19444.6553  EKtot   =      2108.8406  EPtot      =    -21553.4959
+ BOND   =         8.0733  ANGLE   =        15.2445  DIHED      =        13.1566
+ 1-4 NB =        10.9752  1-4 EEL =        37.6300  VDWAALS    =      3745.5809
+ EELEC  =    -25401.3967  EHBOND  =         0.0000  RESTRAINT  =        17.2404
+ EAMBER (non-restraint)  =    -21570.7363
+ DV/DL  =        -7.6370
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -17.4008
+   Dist =     -0.0706  Angl =       0.0000  Tors =    -17.3302
+
+| TI region  2
+
+
+ NSTEP =    17000   TIME(PS) =      68.000  TEMP(K) =   187.48  PRESS =     0.0
+ Etot   =    -19444.6553  EKtot   =      2108.8406  EPtot      =    -21553.4959
+ BOND   =         8.0733  ANGLE   =        15.2445  DIHED      =        13.1566
+ 1-4 NB =        10.9752  1-4 EEL =        37.6300  VDWAALS    =      3745.5809
+ EELEC  =    -25401.3967  EHBOND  =         0.0000  RESTRAINT  =        17.2404
+ EAMBER (non-restraint)  =    -21570.7363
+ DV/DL  =        -7.6370
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -17.4008
+   Dist =     -0.0706  Angl =       0.0000  Tors =    -17.3302
+ NMR restraints: Bond =    0.070   Angle =     0.000   Torsion =    17.170
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    18000   TIME(PS) =      72.000  TEMP(K) =   192.50  PRESS =     0.0
+ Etot   =    -19173.6164  EKtot   =      2165.2867  EPtot      =    -21338.9032
+ BOND   =        25.4874  ANGLE   =        37.4709  DIHED      =        11.3726
+ 1-4 NB =         9.4182  1-4 EEL =        36.3903  VDWAALS    =      3713.5057
+ EELEC  =    -25183.2128  EHBOND  =         0.0000  RESTRAINT  =        10.6646
+ EAMBER (non-restraint)  =    -21349.5678
+ DV/DL  =        -5.0545
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.7638
+   Dist =     -0.2055  Angl =       0.0000  Tors =    -10.5583
+
+| TI region  2
+
+
+ NSTEP =    18000   TIME(PS) =      72.000  TEMP(K) =   192.50  PRESS =     0.0
+ Etot   =    -19173.6164  EKtot   =      2165.2867  EPtot      =    -21338.9032
+ BOND   =        25.4874  ANGLE   =        37.4709  DIHED      =        11.3726
+ 1-4 NB =         9.4182  1-4 EEL =        36.3903  VDWAALS    =      3713.5057
+ EELEC  =    -25183.2128  EHBOND  =         0.0000  RESTRAINT  =        10.6646
+ EAMBER (non-restraint)  =    -21349.5678
+ DV/DL  =        -5.0545
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.7638
+   Dist =     -0.2055  Angl =       0.0000  Tors =    -10.5583
+ NMR restraints: Bond =    0.204   Angle =     0.000   Torsion =    10.461
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    19000   TIME(PS) =      76.000  TEMP(K) =   201.24  PRESS =     0.0
+ Etot   =    -18932.0144  EKtot   =      2263.6089  EPtot      =    -21195.6232
+ BOND   =        23.2506  ANGLE   =        24.1841  DIHED      =        12.2761
+ 1-4 NB =        12.0560  1-4 EEL =        36.4960  VDWAALS    =      3450.8202
+ EELEC  =    -24763.1764  EHBOND  =         0.0000  RESTRAINT  =         8.4702
+ EAMBER (non-restraint)  =    -21204.0934
+ DV/DL  =         6.8236
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.5490
+   Dist =     -0.6425  Angl =       0.0000  Tors =     -7.9065
+
+| TI region  2
+
+
+ NSTEP =    19000   TIME(PS) =      76.000  TEMP(K) =   201.24  PRESS =     0.0
+ Etot   =    -18932.0144  EKtot   =      2263.6089  EPtot      =    -21195.6232
+ BOND   =        23.2506  ANGLE   =        24.1841  DIHED      =        12.2761
+ 1-4 NB =        12.0560  1-4 EEL =        36.4960  VDWAALS    =      3450.8202
+ EELEC  =    -24763.1764  EHBOND  =         0.0000  RESTRAINT  =         8.4702
+ EAMBER (non-restraint)  =    -21204.0934
+ DV/DL  =         6.8236
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.5490
+   Dist =     -0.6425  Angl =       0.0000  Tors =     -7.9065
+ NMR restraints: Bond =    0.637   Angle =     0.000   Torsion =     7.834
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    20000   TIME(PS) =      80.000  TEMP(K) =   206.32  PRESS =     0.0
+ Etot   =    -18666.0484  EKtot   =      2320.8090  EPtot      =    -20986.8573
+ BOND   =        18.1514  ANGLE   =        21.9674  DIHED      =        12.6308
+ 1-4 NB =         9.5073  1-4 EEL =        34.8336  VDWAALS    =      3595.0933
+ EELEC  =    -24685.8646  EHBOND  =         0.0000  RESTRAINT  =         6.8234
+ EAMBER (non-restraint)  =    -20993.6808
+ DV/DL  =         9.8492
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.8869
+   Dist =     -0.4222  Angl =       0.0000  Tors =     -6.4647
+
+| TI region  2
+
+
+ NSTEP =    20000   TIME(PS) =      80.000  TEMP(K) =   206.32  PRESS =     0.0
+ Etot   =    -18666.0484  EKtot   =      2320.8090  EPtot      =    -20986.8573
+ BOND   =        18.1514  ANGLE   =        21.9674  DIHED      =        12.6308
+ 1-4 NB =         9.5073  1-4 EEL =        34.8336  VDWAALS    =      3595.0933
+ EELEC  =    -24685.8646  EHBOND  =         0.0000  RESTRAINT  =         6.8234
+ EAMBER (non-restraint)  =    -20993.6808
+ DV/DL  =         9.8492
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.8869
+   Dist =     -0.4222  Angl =       0.0000  Tors =     -6.4647
+ NMR restraints: Bond =    0.418   Angle =     0.000   Torsion =     6.405
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    21000   TIME(PS) =      84.000  TEMP(K) =   216.31  PRESS =     0.0
+ Etot   =    -18371.8756  EKtot   =      2433.1527  EPtot      =    -20805.0284
+ BOND   =        34.6220  ANGLE   =        24.6127  DIHED      =        15.5839
+ 1-4 NB =         9.1101  1-4 EEL =        35.3340  VDWAALS    =      3478.7539
+ EELEC  =    -24423.4686  EHBOND  =         0.0000  RESTRAINT  =        20.4235
+ EAMBER (non-restraint)  =    -20825.4519
+ DV/DL  =        -8.6652
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -20.6136
+   Dist =     -0.0807  Angl =       0.0000  Tors =    -20.5329
+
+| TI region  2
+
+
+ NSTEP =    21000   TIME(PS) =      84.000  TEMP(K) =   216.31  PRESS =     0.0
+ Etot   =    -18371.8756  EKtot   =      2433.1527  EPtot      =    -20805.0284
+ BOND   =        34.6220  ANGLE   =        24.6127  DIHED      =        15.5839
+ 1-4 NB =         9.1101  1-4 EEL =        35.3340  VDWAALS    =      3478.7539
+ EELEC  =    -24423.4686  EHBOND  =         0.0000  RESTRAINT  =        20.4235
+ EAMBER (non-restraint)  =    -20825.4519
+ DV/DL  =        -8.6652
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -20.6136
+   Dist =     -0.0807  Angl =       0.0000  Tors =    -20.5329
+ NMR restraints: Bond =    0.080   Angle =     0.000   Torsion =    20.344
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    22000   TIME(PS) =      88.000  TEMP(K) =   226.63  PRESS =     0.0
+ Etot   =    -18050.3105  EKtot   =      2549.2360  EPtot      =    -20599.5465
+ BOND   =        16.0132  ANGLE   =        30.8740  DIHED      =        22.2174
+ 1-4 NB =        10.9228  1-4 EEL =        33.9809  VDWAALS    =      3352.3915
+ EELEC  =    -24089.1814  EHBOND  =         0.0000  RESTRAINT  =        23.2350
+ EAMBER (non-restraint)  =    -20622.7815
+ DV/DL  =       -21.3741
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -23.4513
+   Dist =     -0.9122  Angl =       0.0000  Tors =    -22.5391
+
+| TI region  2
+
+
+ NSTEP =    22000   TIME(PS) =      88.000  TEMP(K) =   226.63  PRESS =     0.0
+ Etot   =    -18050.3105  EKtot   =      2549.2360  EPtot      =    -20599.5465
+ BOND   =        16.0132  ANGLE   =        30.8740  DIHED      =        22.2174
+ 1-4 NB =        10.9228  1-4 EEL =        33.9809  VDWAALS    =      3352.3915
+ EELEC  =    -24089.1814  EHBOND  =         0.0000  RESTRAINT  =        23.2350
+ EAMBER (non-restraint)  =    -20622.7815
+ DV/DL  =       -21.3741
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -23.4513
+   Dist =     -0.9122  Angl =       0.0000  Tors =    -22.5391
+ NMR restraints: Bond =    0.904   Angle =     0.000   Torsion =    22.331
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    23000   TIME(PS) =      92.000  TEMP(K) =   236.36  PRESS =     0.0
+ Etot   =    -17757.1411  EKtot   =      2658.6414  EPtot      =    -20415.7825
+ BOND   =        12.3819  ANGLE   =        27.8470  DIHED      =        11.9732
+ 1-4 NB =        11.3640  1-4 EEL =        36.1712  VDWAALS    =      3384.0390
+ EELEC  =    -23905.9359  EHBOND  =         0.0000  RESTRAINT  =         6.3771
+ EAMBER (non-restraint)  =    -20422.1596
+ DV/DL  =         5.1496
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.4364
+   Dist =     -0.2610  Angl =       0.0000  Tors =     -6.1754
+
+| TI region  2
+
+
+ NSTEP =    23000   TIME(PS) =      92.000  TEMP(K) =   236.36  PRESS =     0.0
+ Etot   =    -17757.1411  EKtot   =      2658.6414  EPtot      =    -20415.7825
+ BOND   =        12.3819  ANGLE   =        27.8470  DIHED      =        11.9732
+ 1-4 NB =        11.3640  1-4 EEL =        36.1712  VDWAALS    =      3384.0390
+ EELEC  =    -23905.9359  EHBOND  =         0.0000  RESTRAINT  =         6.3771
+ EAMBER (non-restraint)  =    -20422.1596
+ DV/DL  =         5.1496
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.4364
+   Dist =     -0.2610  Angl =       0.0000  Tors =     -6.1754
+ NMR restraints: Bond =    0.259   Angle =     0.000   Torsion =     6.118
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    24000   TIME(PS) =      96.000  TEMP(K) =   241.27  PRESS =     0.0
+ Etot   =    -17419.6477  EKtot   =      2713.8950  EPtot      =    -20133.5426
+ BOND   =         8.4153  ANGLE   =        23.7194  DIHED      =        12.7779
+ 1-4 NB =        10.7612  1-4 EEL =        38.2432  VDWAALS    =      3239.0015
+ EELEC  =    -23481.2046  EHBOND  =         0.0000  RESTRAINT  =        14.7434
+ EAMBER (non-restraint)  =    -20148.2861
+ DV/DL  =        -6.0110
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -14.8806
+   Dist =     -0.2976  Angl =       0.0000  Tors =    -14.5831
+
+| TI region  2
+
+
+ NSTEP =    24000   TIME(PS) =      96.000  TEMP(K) =   241.27  PRESS =     0.0
+ Etot   =    -17419.6477  EKtot   =      2713.8950  EPtot      =    -20133.5426
+ BOND   =         8.4153  ANGLE   =        23.7194  DIHED      =        12.7779
+ 1-4 NB =        10.7612  1-4 EEL =        38.2432  VDWAALS    =      3239.0015
+ EELEC  =    -23481.2046  EHBOND  =         0.0000  RESTRAINT  =        14.7434
+ EAMBER (non-restraint)  =    -20148.2861
+ DV/DL  =        -6.0110
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -14.8806
+   Dist =     -0.2976  Angl =       0.0000  Tors =    -14.5831
+ NMR restraints: Bond =    0.295   Angle =     0.000   Torsion =    14.449
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    25000   TIME(PS) =     100.000  TEMP(K) =   253.75  PRESS =     0.0
+ Etot   =    -17116.2076  EKtot   =      2854.2559  EPtot      =    -19970.4635
+ BOND   =        11.8405  ANGLE   =        18.6418  DIHED      =        13.0460
+ 1-4 NB =         9.2743  1-4 EEL =        34.5949  VDWAALS    =      3191.9923
+ EELEC  =    -23260.2186  EHBOND  =         0.0000  RESTRAINT  =        10.3653
+ EAMBER (non-restraint)  =    -19980.8288
+ DV/DL  =        -6.3665
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.4617
+   Dist =     -0.1686  Angl =       0.0000  Tors =    -10.2932
+
+| TI region  2
+
+
+ NSTEP =    25000   TIME(PS) =     100.000  TEMP(K) =   253.75  PRESS =     0.0
+ Etot   =    -17116.2076  EKtot   =      2854.2559  EPtot      =    -19970.4635
+ BOND   =        11.8405  ANGLE   =        18.6418  DIHED      =        13.0460
+ 1-4 NB =         9.2743  1-4 EEL =        34.5949  VDWAALS    =      3191.9923
+ EELEC  =    -23260.2186  EHBOND  =         0.0000  RESTRAINT  =        10.3653
+ EAMBER (non-restraint)  =    -19980.8288
+ DV/DL  =        -6.3665
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.4617
+   Dist =     -0.1686  Angl =       0.0000  Tors =    -10.2932
+ NMR restraints: Bond =    0.167   Angle =     0.000   Torsion =    10.198
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    26000   TIME(PS) =     104.000  TEMP(K) =   255.94  PRESS =     0.0
+ Etot   =    -16768.6254  EKtot   =      2878.8860  EPtot      =    -19647.5114
+ BOND   =         7.2260  ANGLE   =        21.7734  DIHED      =        11.0120
+ 1-4 NB =        11.3518  1-4 EEL =        36.5593  VDWAALS    =      3019.7792
+ EELEC  =    -22763.0972  EHBOND  =         0.0000  RESTRAINT  =         7.8841
+ EAMBER (non-restraint)  =    -19655.3955
+ DV/DL  =         3.9573
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.9574
+   Dist =     -0.0205  Angl =       0.0000  Tors =     -7.9370
+
+| TI region  2
+
+
+ NSTEP =    26000   TIME(PS) =     104.000  TEMP(K) =   255.94  PRESS =     0.0
+ Etot   =    -16768.6254  EKtot   =      2878.8860  EPtot      =    -19647.5114
+ BOND   =         7.2260  ANGLE   =        21.7734  DIHED      =        11.0120
+ 1-4 NB =        11.3518  1-4 EEL =        36.5593  VDWAALS    =      3019.7792
+ EELEC  =    -22763.0972  EHBOND  =         0.0000  RESTRAINT  =         7.8841
+ EAMBER (non-restraint)  =    -19655.3955
+ DV/DL  =         3.9573
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.9574
+   Dist =     -0.0205  Angl =       0.0000  Tors =     -7.9370
+ NMR restraints: Bond =    0.020   Angle =     0.000   Torsion =     7.864
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    27000   TIME(PS) =     108.000  TEMP(K) =   260.99  PRESS =     0.0
+ Etot   =    -16431.9135  EKtot   =      2935.7090  EPtot      =    -19367.6225
+ BOND   =        11.7753  ANGLE   =        21.3775  DIHED      =        12.1546
+ 1-4 NB =        10.2335  1-4 EEL =        37.7246  VDWAALS    =      2889.2502
+ EELEC  =    -22362.0834  EHBOND  =         0.0000  RESTRAINT  =        11.9452
+ EAMBER (non-restraint)  =    -19379.5677
+ DV/DL  =        -7.1529
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.0564
+   Dist =     -0.2184  Angl =       0.0000  Tors =    -11.8380
+
+| TI region  2
+
+
+ NSTEP =    27000   TIME(PS) =     108.000  TEMP(K) =   260.99  PRESS =     0.0
+ Etot   =    -16431.9135  EKtot   =      2935.7090  EPtot      =    -19367.6225
+ BOND   =        11.7753  ANGLE   =        21.3775  DIHED      =        12.1546
+ 1-4 NB =        10.2335  1-4 EEL =        37.7246  VDWAALS    =      2889.2502
+ EELEC  =    -22362.0834  EHBOND  =         0.0000  RESTRAINT  =        11.9452
+ EAMBER (non-restraint)  =    -19379.5677
+ DV/DL  =        -7.1529
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.0564
+   Dist =     -0.2184  Angl =       0.0000  Tors =    -11.8380
+ NMR restraints: Bond =    0.216   Angle =     0.000   Torsion =    11.729
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    28000   TIME(PS) =     112.000  TEMP(K) =   271.49  PRESS =     0.0
+ Etot   =    -16101.8352  EKtot   =      3053.8552  EPtot      =    -19155.6904
+ BOND   =        13.1098  ANGLE   =        21.8574  DIHED      =        16.0718
+ 1-4 NB =        11.4496  1-4 EEL =        35.2416  VDWAALS    =      2899.4542
+ EELEC  =    -22159.9677  EHBOND  =         0.0000  RESTRAINT  =         7.0928
+ EAMBER (non-restraint)  =    -19162.7833
+ DV/DL  =        -0.4437
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.1588
+   Dist =     -0.2356  Angl =       0.0000  Tors =     -6.9232
+
+| TI region  2
+
+
+ NSTEP =    28000   TIME(PS) =     112.000  TEMP(K) =   271.49  PRESS =     0.0
+ Etot   =    -16101.8352  EKtot   =      3053.8552  EPtot      =    -19155.6904
+ BOND   =        13.1098  ANGLE   =        21.8574  DIHED      =        16.0718
+ 1-4 NB =        11.4496  1-4 EEL =        35.2416  VDWAALS    =      2899.4542
+ EELEC  =    -22159.9677  EHBOND  =         0.0000  RESTRAINT  =         7.0928
+ EAMBER (non-restraint)  =    -19162.7833
+ DV/DL  =        -0.4437
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.1588
+   Dist =     -0.2356  Angl =       0.0000  Tors =     -6.9232
+ NMR restraints: Bond =    0.233   Angle =     0.000   Torsion =     6.859
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    29000   TIME(PS) =     116.000  TEMP(K) =   280.72  PRESS =     0.0
+ Etot   =    -15785.1920  EKtot   =      3157.6950  EPtot      =    -18942.8870
+ BOND   =        14.6401  ANGLE   =        24.9151  DIHED      =        12.7820
+ 1-4 NB =        12.4566  1-4 EEL =        36.1372  VDWAALS    =      2813.7707
+ EELEC  =    -21864.0621  EHBOND  =         0.0000  RESTRAINT  =         6.4734
+ EAMBER (non-restraint)  =    -18949.3604
+ DV/DL  =        -1.8353
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.5337
+   Dist =     -0.2356  Angl =       0.0000  Tors =     -6.2981
+
+| TI region  2
+
+
+ NSTEP =    29000   TIME(PS) =     116.000  TEMP(K) =   280.72  PRESS =     0.0
+ Etot   =    -15785.1920  EKtot   =      3157.6950  EPtot      =    -18942.8870
+ BOND   =        14.6401  ANGLE   =        24.9151  DIHED      =        12.7820
+ 1-4 NB =        12.4566  1-4 EEL =        36.1372  VDWAALS    =      2813.7707
+ EELEC  =    -21864.0621  EHBOND  =         0.0000  RESTRAINT  =         6.4734
+ EAMBER (non-restraint)  =    -18949.3604
+ DV/DL  =        -1.8353
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.5337
+   Dist =     -0.2356  Angl =       0.0000  Tors =     -6.2981
+ NMR restraints: Bond =    0.233   Angle =     0.000   Torsion =     6.240
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    30000   TIME(PS) =     120.000  TEMP(K) =   292.89  PRESS =     0.0
+ Etot   =    -15494.3280  EKtot   =      3294.5524  EPtot      =    -18788.8804
+ BOND   =        11.3490  ANGLE   =        18.6093  DIHED      =        17.0660
+ 1-4 NB =         8.6893  1-4 EEL =        35.1094  VDWAALS    =      2705.6709
+ EELEC  =    -21603.5618  EHBOND  =         0.0000  RESTRAINT  =        18.1875
+ EAMBER (non-restraint)  =    -18807.0679
+ DV/DL  =       -17.5882
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -18.3568
+   Dist =     -0.5951  Angl =       0.0000  Tors =    -17.7617
+
+| TI region  2
+
+
+ NSTEP =    30000   TIME(PS) =     120.000  TEMP(K) =   292.89  PRESS =     0.0
+ Etot   =    -15494.3280  EKtot   =      3294.5524  EPtot      =    -18788.8804
+ BOND   =        11.3490  ANGLE   =        18.6093  DIHED      =        17.0660
+ 1-4 NB =         8.6893  1-4 EEL =        35.1094  VDWAALS    =      2705.6709
+ EELEC  =    -21603.5618  EHBOND  =         0.0000  RESTRAINT  =        18.1875
+ EAMBER (non-restraint)  =    -18807.0679
+ DV/DL  =       -17.5882
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -18.3568
+   Dist =     -0.5951  Angl =       0.0000  Tors =    -17.7617
+ NMR restraints: Bond =    0.590   Angle =     0.000   Torsion =    17.598
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    31000   TIME(PS) =     124.000  TEMP(K) =   293.73  PRESS =     0.0
+ Etot   =    -15354.0339  EKtot   =      3304.0056  EPtot      =    -18658.0395
+ BOND   =        10.8345  ANGLE   =        12.3401  DIHED      =        14.0124
+ 1-4 NB =         9.9155  1-4 EEL =        35.7477  VDWAALS    =      2648.0480
+ EELEC  =    -21394.9339  EHBOND  =         0.0000  RESTRAINT  =         5.9961
+ EAMBER (non-restraint)  =    -18664.0356
+ DV/DL  =         0.4059
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.0519
+   Dist =     -0.3598  Angl =       0.0000  Tors =     -5.6921
+
+| TI region  2
+
+
+ NSTEP =    31000   TIME(PS) =     124.000  TEMP(K) =   293.73  PRESS =     0.0
+ Etot   =    -15354.0339  EKtot   =      3304.0056  EPtot      =    -18658.0395
+ BOND   =        10.8345  ANGLE   =        12.3401  DIHED      =        14.0124
+ 1-4 NB =         9.9155  1-4 EEL =        35.7477  VDWAALS    =      2648.0480
+ EELEC  =    -21394.9339  EHBOND  =         0.0000  RESTRAINT  =         5.9961
+ EAMBER (non-restraint)  =    -18664.0356
+ DV/DL  =         0.4059
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.0519
+   Dist =     -0.3598  Angl =       0.0000  Tors =     -5.6921
+ NMR restraints: Bond =    0.357   Angle =     0.000   Torsion =     5.640
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    32000   TIME(PS) =     128.000  TEMP(K) =   293.85  PRESS =     0.0
+ Etot   =    -15273.9533  EKtot   =      3305.3707  EPtot      =    -18579.3240
+ BOND   =        10.6964  ANGLE   =        18.9699  DIHED      =        12.4881
+ 1-4 NB =         9.8212  1-4 EEL =        34.6213  VDWAALS    =      2637.7258
+ EELEC  =    -21310.9365  EHBOND  =         0.0000  RESTRAINT  =         7.2897
+ EAMBER (non-restraint)  =    -18586.6138
+ DV/DL  =         0.7268
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.3576
+   Dist =     -0.1719  Angl =       0.0000  Tors =     -7.1857
+
+| TI region  2
+
+
+ NSTEP =    32000   TIME(PS) =     128.000  TEMP(K) =   293.85  PRESS =     0.0
+ Etot   =    -15273.9533  EKtot   =      3305.3707  EPtot      =    -18579.3240
+ BOND   =        10.6964  ANGLE   =        18.9699  DIHED      =        12.4881
+ 1-4 NB =         9.8212  1-4 EEL =        34.6213  VDWAALS    =      2637.7258
+ EELEC  =    -21310.9365  EHBOND  =         0.0000  RESTRAINT  =         7.2897
+ EAMBER (non-restraint)  =    -18586.6138
+ DV/DL  =         0.7268
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.3576
+   Dist =     -0.1719  Angl =       0.0000  Tors =     -7.1857
+ NMR restraints: Bond =    0.170   Angle =     0.000   Torsion =     7.119
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    33000   TIME(PS) =     132.000  TEMP(K) =   299.30  PRESS =     0.0
+ Etot   =    -15261.5255  EKtot   =      3366.7223  EPtot      =    -18628.2478
+ BOND   =        11.1995  ANGLE   =        14.4624  DIHED      =        14.1405
+ 1-4 NB =         9.5856  1-4 EEL =        38.6323  VDWAALS    =      2645.0130
+ EELEC  =    -21365.4817  EHBOND  =         0.0000  RESTRAINT  =         4.2007
+ EAMBER (non-restraint)  =    -18632.4485
+ DV/DL  =         7.0520
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -4.2397
+   Dist =     -0.0159  Angl =       0.0000  Tors =     -4.2239
+
+| TI region  2
+
+
+ NSTEP =    33000   TIME(PS) =     132.000  TEMP(K) =   299.30  PRESS =     0.0
+ Etot   =    -15261.5255  EKtot   =      3366.7223  EPtot      =    -18628.2478
+ BOND   =        11.1995  ANGLE   =        14.4624  DIHED      =        14.1405
+ 1-4 NB =         9.5856  1-4 EEL =        38.6323  VDWAALS    =      2645.0130
+ EELEC  =    -21365.4817  EHBOND  =         0.0000  RESTRAINT  =         4.2007
+ EAMBER (non-restraint)  =    -18632.4485
+ DV/DL  =         7.0520
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -4.2397
+   Dist =     -0.0159  Angl =       0.0000  Tors =     -4.2239
+ NMR restraints: Bond =    0.016   Angle =     0.000   Torsion =     4.185
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    34000   TIME(PS) =     136.000  TEMP(K) =   294.83  PRESS =     0.0
+ Etot   =    -15273.7461  EKtot   =      3316.4320  EPtot      =    -18590.1782
+ BOND   =        15.7528  ANGLE   =        24.7805  DIHED      =         7.3269
+ 1-4 NB =         9.3467  1-4 EEL =        35.5338  VDWAALS    =      2591.6468
+ EELEC  =    -21282.0041  EHBOND  =         0.0000  RESTRAINT  =         7.4385
+ EAMBER (non-restraint)  =    -18597.6166
+ DV/DL  =         0.8035
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.5077
+   Dist =     -0.2032  Angl =       0.0000  Tors =     -7.3045
+
+| TI region  2
+
+
+ NSTEP =    34000   TIME(PS) =     136.000  TEMP(K) =   294.83  PRESS =     0.0
+ Etot   =    -15273.7461  EKtot   =      3316.4320  EPtot      =    -18590.1782
+ BOND   =        15.7528  ANGLE   =        24.7805  DIHED      =         7.3269
+ 1-4 NB =         9.3467  1-4 EEL =        35.5338  VDWAALS    =      2591.6468
+ EELEC  =    -21282.0041  EHBOND  =         0.0000  RESTRAINT  =         7.4385
+ EAMBER (non-restraint)  =    -18597.6166
+ DV/DL  =         0.8035
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.5077
+   Dist =     -0.2032  Angl =       0.0000  Tors =     -7.3045
+ NMR restraints: Bond =    0.201   Angle =     0.000   Torsion =     7.237
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    35000   TIME(PS) =     140.000  TEMP(K) =   297.21  PRESS =     0.0
+ Etot   =    -15265.4968  EKtot   =      3343.1593  EPtot      =    -18608.6561
+ BOND   =        12.3601  ANGLE   =        26.0699  DIHED      =        13.3165
+ 1-4 NB =         9.2708  1-4 EEL =        36.7620  VDWAALS    =      2656.8890
+ EELEC  =    -21369.7889  EHBOND  =         0.0000  RESTRAINT  =         6.4644
+ EAMBER (non-restraint)  =    -18615.1206
+ DV/DL  =        -5.7222
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.5246
+   Dist =     -0.4664  Angl =       0.0000  Tors =     -6.0582
+
+| TI region  2
+
+
+ NSTEP =    35000   TIME(PS) =     140.000  TEMP(K) =   297.21  PRESS =     0.0
+ Etot   =    -15265.4968  EKtot   =      3343.1593  EPtot      =    -18608.6561
+ BOND   =        12.3601  ANGLE   =        26.0699  DIHED      =        13.3165
+ 1-4 NB =         9.2708  1-4 EEL =        36.7620  VDWAALS    =      2656.8890
+ EELEC  =    -21369.7889  EHBOND  =         0.0000  RESTRAINT  =         6.4644
+ EAMBER (non-restraint)  =    -18615.1206
+ DV/DL  =        -5.7222
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.5246
+   Dist =     -0.4664  Angl =       0.0000  Tors =     -6.0582
+ NMR restraints: Bond =    0.462   Angle =     0.000   Torsion =     6.002
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    36000   TIME(PS) =     144.000  TEMP(K) =   301.14  PRESS =     0.0
+ Etot   =    -15298.7047  EKtot   =      3387.3565  EPtot      =    -18686.0612
+ BOND   =        22.0907  ANGLE   =        23.2705  DIHED      =        25.2964
+ 1-4 NB =        11.5320  1-4 EEL =        36.4078  VDWAALS    =      2734.2928
+ EELEC  =    -21551.0265  EHBOND  =         0.0000  RESTRAINT  =        12.0751
+ EAMBER (non-restraint)  =    -18698.1364
+ DV/DL  =         4.6098
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.1875
+   Dist =     -0.0050  Angl =       0.0000  Tors =    -12.1825
+
+| TI region  2
+
+
+ NSTEP =    36000   TIME(PS) =     144.000  TEMP(K) =   301.14  PRESS =     0.0
+ Etot   =    -15298.7047  EKtot   =      3387.3565  EPtot      =    -18686.0612
+ BOND   =        22.0907  ANGLE   =        23.2705  DIHED      =        25.2964
+ 1-4 NB =        11.5320  1-4 EEL =        36.4078  VDWAALS    =      2734.2928
+ EELEC  =    -21551.0265  EHBOND  =         0.0000  RESTRAINT  =        12.0751
+ EAMBER (non-restraint)  =    -18698.1364
+ DV/DL  =         4.6098
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.1875
+   Dist =     -0.0050  Angl =       0.0000  Tors =    -12.1825
+ NMR restraints: Bond =    0.005   Angle =     0.000   Torsion =    12.070
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    37000   TIME(PS) =     148.000  TEMP(K) =   295.93  PRESS =     0.0
+ Etot   =    -15267.9166  EKtot   =      3328.7269  EPtot      =    -18596.6436
+ BOND   =        17.6955  ANGLE   =        41.4687  DIHED      =        13.4064
+ 1-4 NB =        10.7066  1-4 EEL =        33.5127  VDWAALS    =      2621.8708
+ EELEC  =    -21342.0906  EHBOND  =         0.0000  RESTRAINT  =         6.7864
+ EAMBER (non-restraint)  =    -18603.4299
+ DV/DL  =        -3.7121
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.8495
+   Dist =     -0.1761  Angl =       0.0000  Tors =     -6.6734
+
+| TI region  2
+
+
+ NSTEP =    37000   TIME(PS) =     148.000  TEMP(K) =   295.93  PRESS =     0.0
+ Etot   =    -15267.9166  EKtot   =      3328.7269  EPtot      =    -18596.6436
+ BOND   =        17.6955  ANGLE   =        41.4687  DIHED      =        13.4064
+ 1-4 NB =        10.7066  1-4 EEL =        33.5127  VDWAALS    =      2621.8708
+ EELEC  =    -21342.0906  EHBOND  =         0.0000  RESTRAINT  =         6.7864
+ EAMBER (non-restraint)  =    -18603.4299
+ DV/DL  =        -3.7121
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -6.8495
+   Dist =     -0.1761  Angl =       0.0000  Tors =     -6.6734
+ NMR restraints: Bond =    0.174   Angle =     0.000   Torsion =     6.612
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    38000   TIME(PS) =     152.000  TEMP(K) =   299.28  PRESS =     0.0
+ Etot   =    -15240.1534  EKtot   =      3366.4291  EPtot      =    -18606.5825
+ BOND   =        25.9207  ANGLE   =        40.5236  DIHED      =        12.8523
+ 1-4 NB =        10.0820  1-4 EEL =        35.2149  VDWAALS    =      2674.5485
+ EELEC  =    -21415.3724  EHBOND  =         0.0000  RESTRAINT  =         9.6480
+ EAMBER (non-restraint)  =    -18616.2305
+ DV/DL  =         5.0797
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.7378
+   Dist =     -0.1580  Angl =       0.0000  Tors =     -9.5798
+
+| TI region  2
+
+
+ NSTEP =    38000   TIME(PS) =     152.000  TEMP(K) =   299.28  PRESS =     0.0
+ Etot   =    -15240.1534  EKtot   =      3366.4291  EPtot      =    -18606.5825
+ BOND   =        25.9207  ANGLE   =        40.5236  DIHED      =        12.8523
+ 1-4 NB =        10.0820  1-4 EEL =        35.2149  VDWAALS    =      2674.5485
+ EELEC  =    -21415.3724  EHBOND  =         0.0000  RESTRAINT  =         9.6480
+ EAMBER (non-restraint)  =    -18616.2305
+ DV/DL  =         5.0797
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.7378
+   Dist =     -0.1580  Angl =       0.0000  Tors =     -9.5798
+ NMR restraints: Bond =    0.157   Angle =     0.000   Torsion =     9.491
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    39000   TIME(PS) =     156.000  TEMP(K) =   301.10  PRESS =     0.0
+ Etot   =    -15250.4706  EKtot   =      3386.9665  EPtot      =    -18637.4372
+ BOND   =        23.6612  ANGLE   =        31.5485  DIHED      =        21.1849
+ 1-4 NB =        11.1427  1-4 EEL =        38.5958  VDWAALS    =      2772.9232
+ EELEC  =    -21546.8545  EHBOND  =         0.0000  RESTRAINT  =        10.3611
+ EAMBER (non-restraint)  =    -18647.7982
+ DV/DL  =       -13.1909
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.4575
+   Dist =     -0.7262  Angl =       0.0000  Tors =     -9.7312
+
+| TI region  2
+
+
+ NSTEP =    39000   TIME(PS) =     156.000  TEMP(K) =   301.10  PRESS =     0.0
+ Etot   =    -15250.4706  EKtot   =      3386.9665  EPtot      =    -18637.4372
+ BOND   =        23.6612  ANGLE   =        31.5485  DIHED      =        21.1849
+ 1-4 NB =        11.1427  1-4 EEL =        38.5958  VDWAALS    =      2772.9232
+ EELEC  =    -21546.8545  EHBOND  =         0.0000  RESTRAINT  =        10.3611
+ EAMBER (non-restraint)  =    -18647.7982
+ DV/DL  =       -13.1909
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -10.4575
+   Dist =     -0.7262  Angl =       0.0000  Tors =     -9.7312
+ NMR restraints: Bond =    0.720   Angle =     0.000   Torsion =     9.642
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    40000   TIME(PS) =     160.000  TEMP(K) =   301.99  PRESS =     0.0
+ Etot   =    -15313.1110  EKtot   =      3396.9092  EPtot      =    -18710.0202
+ BOND   =        14.3152  ANGLE   =        40.3335  DIHED      =        18.1539
+ 1-4 NB =         8.7142  1-4 EEL =        34.4631  VDWAALS    =      2737.8721
+ EELEC  =    -21572.1100  EHBOND  =         0.0000  RESTRAINT  =         8.2377
+ EAMBER (non-restraint)  =    -18718.2579
+ DV/DL  =         5.0529
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.3144
+   Dist =     -0.1187  Angl =       0.0000  Tors =     -8.1956
+
+| TI region  2
+
+
+ NSTEP =    40000   TIME(PS) =     160.000  TEMP(K) =   301.99  PRESS =     0.0
+ Etot   =    -15313.1110  EKtot   =      3396.9092  EPtot      =    -18710.0202
+ BOND   =        14.3152  ANGLE   =        40.3335  DIHED      =        18.1539
+ 1-4 NB =         8.7142  1-4 EEL =        34.4631  VDWAALS    =      2737.8721
+ EELEC  =    -21572.1100  EHBOND  =         0.0000  RESTRAINT  =         8.2377
+ EAMBER (non-restraint)  =    -18718.2579
+ DV/DL  =         5.0529
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.3144
+   Dist =     -0.1187  Angl =       0.0000  Tors =     -8.1956
+ NMR restraints: Bond =    0.118   Angle =     0.000   Torsion =     8.120
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    41000   TIME(PS) =     164.000  TEMP(K) =   299.18  PRESS =     0.0
+ Etot   =    -15299.8583  EKtot   =      3365.3132  EPtot      =    -18665.1716
+ BOND   =        10.0420  ANGLE   =        22.0223  DIHED      =         7.6830
+ 1-4 NB =        10.9353  1-4 EEL =        38.3907  VDWAALS    =      2770.6790
+ EELEC  =    -21534.2521  EHBOND  =         0.0000  RESTRAINT  =         9.3283
+ EAMBER (non-restraint)  =    -18674.4999
+ DV/DL  =       -20.0683
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.4151
+   Dist =     -0.3788  Angl =       0.0000  Tors =     -9.0363
+
+| TI region  2
+
+
+ NSTEP =    41000   TIME(PS) =     164.000  TEMP(K) =   299.18  PRESS =     0.0
+ Etot   =    -15299.8583  EKtot   =      3365.3132  EPtot      =    -18665.1716
+ BOND   =        10.0420  ANGLE   =        22.0223  DIHED      =         7.6830
+ 1-4 NB =        10.9353  1-4 EEL =        38.3907  VDWAALS    =      2770.6790
+ EELEC  =    -21534.2521  EHBOND  =         0.0000  RESTRAINT  =         9.3283
+ EAMBER (non-restraint)  =    -18674.4999
+ DV/DL  =       -20.0683
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.4151
+   Dist =     -0.3788  Angl =       0.0000  Tors =     -9.0363
+ NMR restraints: Bond =    0.375   Angle =     0.000   Torsion =     8.953
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    42000   TIME(PS) =     168.000  TEMP(K) =   297.47  PRESS =     0.0
+ Etot   =    -15287.8761  EKtot   =      3346.1144  EPtot      =    -18633.9905
+ BOND   =         9.7173  ANGLE   =        29.9951  DIHED      =        13.4834
+ 1-4 NB =         9.9469  1-4 EEL =        34.7354  VDWAALS    =      2624.6309
+ EELEC  =    -21365.0747  EHBOND  =         0.0000  RESTRAINT  =         8.5753
+ EAMBER (non-restraint)  =    -18642.5658
+ DV/DL  =        -0.5279
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.6551
+   Dist =     -0.5806  Angl =       0.0000  Tors =     -8.0745
+
+| TI region  2
+
+
+ NSTEP =    42000   TIME(PS) =     168.000  TEMP(K) =   297.47  PRESS =     0.0
+ Etot   =    -15287.8761  EKtot   =      3346.1144  EPtot      =    -18633.9905
+ BOND   =         9.7173  ANGLE   =        29.9951  DIHED      =        13.4834
+ 1-4 NB =         9.9469  1-4 EEL =        34.7354  VDWAALS    =      2624.6309
+ EELEC  =    -21365.0747  EHBOND  =         0.0000  RESTRAINT  =         8.5753
+ EAMBER (non-restraint)  =    -18642.5658
+ DV/DL  =        -0.5279
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -8.6551
+   Dist =     -0.5806  Angl =       0.0000  Tors =     -8.0745
+ NMR restraints: Bond =    0.575   Angle =     0.000   Torsion =     8.000
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    43000   TIME(PS) =     172.000  TEMP(K) =   299.29  PRESS =     0.0
+ Etot   =    -15279.5009  EKtot   =      3366.6126  EPtot      =    -18646.1134
+ BOND   =         8.3163  ANGLE   =        16.9399  DIHED      =        13.7921
+ 1-4 NB =        11.4822  1-4 EEL =        37.3813  VDWAALS    =      2739.5256
+ EELEC  =    -21486.0087  EHBOND  =         0.0000  RESTRAINT  =        12.4579
+ EAMBER (non-restraint)  =    -18658.5713
+ DV/DL  =        -8.5561
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.5738
+   Dist =     -0.2351  Angl =       0.0000  Tors =    -12.3387
+
+| TI region  2
+
+
+ NSTEP =    43000   TIME(PS) =     172.000  TEMP(K) =   299.29  PRESS =     0.0
+ Etot   =    -15279.5009  EKtot   =      3366.6126  EPtot      =    -18646.1134
+ BOND   =         8.3163  ANGLE   =        16.9399  DIHED      =        13.7921
+ 1-4 NB =        11.4822  1-4 EEL =        37.3813  VDWAALS    =      2739.5256
+ EELEC  =    -21486.0087  EHBOND  =         0.0000  RESTRAINT  =        12.4579
+ EAMBER (non-restraint)  =    -18658.5713
+ DV/DL  =        -8.5561
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.5738
+   Dist =     -0.2351  Angl =       0.0000  Tors =    -12.3387
+ NMR restraints: Bond =    0.233   Angle =     0.000   Torsion =    12.225
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    44000   TIME(PS) =     176.000  TEMP(K) =   305.07  PRESS =     0.0
+ Etot   =    -15278.9019  EKtot   =      3431.5620  EPtot      =    -18710.4638
+ BOND   =        11.8224  ANGLE   =        28.0454  DIHED      =        14.7532
+ 1-4 NB =        12.1091  1-4 EEL =        32.9363  VDWAALS    =      2684.4374
+ EELEC  =    -21496.3976  EHBOND  =         0.0000  RESTRAINT  =         1.8300
+ EAMBER (non-restraint)  =    -18712.2939
+ DV/DL  =         5.1503
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -1.8471
+   Dist =     -0.1090  Angl =       0.0000  Tors =     -1.7380
+
+| TI region  2
+
+
+ NSTEP =    44000   TIME(PS) =     176.000  TEMP(K) =   305.07  PRESS =     0.0
+ Etot   =    -15278.9019  EKtot   =      3431.5620  EPtot      =    -18710.4638
+ BOND   =        11.8224  ANGLE   =        28.0454  DIHED      =        14.7532
+ 1-4 NB =        12.1091  1-4 EEL =        32.9363  VDWAALS    =      2684.4374
+ EELEC  =    -21496.3976  EHBOND  =         0.0000  RESTRAINT  =         1.8300
+ EAMBER (non-restraint)  =    -18712.2939
+ DV/DL  =         5.1503
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -1.8471
+   Dist =     -0.1090  Angl =       0.0000  Tors =     -1.7380
+ NMR restraints: Bond =    0.108   Angle =     0.000   Torsion =     1.722
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    45000   TIME(PS) =     180.000  TEMP(K) =   294.95  PRESS =     0.0
+ Etot   =    -15272.6623  EKtot   =      3317.7033  EPtot      =    -18590.3656
+ BOND   =        22.1044  ANGLE   =        27.5818  DIHED      =        16.7363
+ 1-4 NB =        11.2265  1-4 EEL =        36.0421  VDWAALS    =      2627.1810
+ EELEC  =    -21337.1717  EHBOND  =         0.0000  RESTRAINT  =         5.9340
+ EAMBER (non-restraint)  =    -18596.2995
+ DV/DL  =        -7.1425
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -5.9892
+   Dist =     -0.1043  Angl =       0.0000  Tors =     -5.8849
+
+| TI region  2
+
+
+ NSTEP =    45000   TIME(PS) =     180.000  TEMP(K) =   294.95  PRESS =     0.0
+ Etot   =    -15272.6623  EKtot   =      3317.7033  EPtot      =    -18590.3656
+ BOND   =        22.1044  ANGLE   =        27.5818  DIHED      =        16.7363
+ 1-4 NB =        11.2265  1-4 EEL =        36.0421  VDWAALS    =      2627.1810
+ EELEC  =    -21337.1717  EHBOND  =         0.0000  RESTRAINT  =         5.9340
+ EAMBER (non-restraint)  =    -18596.2995
+ DV/DL  =        -7.1425
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -5.9892
+   Dist =     -0.1043  Angl =       0.0000  Tors =     -5.8849
+ NMR restraints: Bond =    0.103   Angle =     0.000   Torsion =     5.831
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    46000   TIME(PS) =     184.000  TEMP(K) =   297.73  PRESS =     0.0
+ Etot   =    -15299.9476  EKtot   =      3349.0225  EPtot      =    -18648.9701
+ BOND   =        10.8390  ANGLE   =        19.0189  DIHED      =        18.5210
+ 1-4 NB =        10.7184  1-4 EEL =        36.2581  VDWAALS    =      2666.4530
+ EELEC  =    -21423.3035  EHBOND  =         0.0000  RESTRAINT  =        12.5251
+ EAMBER (non-restraint)  =    -18661.4952
+ DV/DL  =       -10.8766
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.6416
+   Dist =     -0.5914  Angl =       0.0000  Tors =    -12.0502
+
+| TI region  2
+
+
+ NSTEP =    46000   TIME(PS) =     184.000  TEMP(K) =   297.73  PRESS =     0.0
+ Etot   =    -15299.9476  EKtot   =      3349.0225  EPtot      =    -18648.9701
+ BOND   =        10.8390  ANGLE   =        19.0189  DIHED      =        18.5210
+ 1-4 NB =        10.7184  1-4 EEL =        36.2581  VDWAALS    =      2666.4530
+ EELEC  =    -21423.3035  EHBOND  =         0.0000  RESTRAINT  =        12.5251
+ EAMBER (non-restraint)  =    -18661.4952
+ DV/DL  =       -10.8766
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -12.6416
+   Dist =     -0.5914  Angl =       0.0000  Tors =    -12.0502
+ NMR restraints: Bond =    0.586   Angle =     0.000   Torsion =    11.939
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    47000   TIME(PS) =     188.000  TEMP(K) =   289.71  PRESS =     0.0
+ Etot   =    -15281.5600  EKtot   =      3258.7544  EPtot      =    -18540.3143
+ BOND   =        22.7599  ANGLE   =        23.3097  DIHED      =        15.5665
+ 1-4 NB =        12.1216  1-4 EEL =        37.3383  VDWAALS    =      2546.5864
+ EELEC  =    -21211.9326  EHBOND  =         0.0000  RESTRAINT  =        13.9359
+ EAMBER (non-restraint)  =    -18554.2502
+ DV/DL  =        -1.4765
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -14.0656
+   Dist =     -0.2916  Angl =       0.0000  Tors =    -13.7740
+
+| TI region  2
+
+
+ NSTEP =    47000   TIME(PS) =     188.000  TEMP(K) =   289.71  PRESS =     0.0
+ Etot   =    -15281.5600  EKtot   =      3258.7544  EPtot      =    -18540.3143
+ BOND   =        22.7599  ANGLE   =        23.3097  DIHED      =        15.5665
+ 1-4 NB =        12.1216  1-4 EEL =        37.3383  VDWAALS    =      2546.5864
+ EELEC  =    -21211.9326  EHBOND  =         0.0000  RESTRAINT  =        13.9359
+ EAMBER (non-restraint)  =    -18554.2502
+ DV/DL  =        -1.4765
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -14.0656
+   Dist =     -0.2916  Angl =       0.0000  Tors =    -13.7740
+ NMR restraints: Bond =    0.289   Angle =     0.000   Torsion =    13.647
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    48000   TIME(PS) =     192.000  TEMP(K) =   299.91  PRESS =     0.0
+ Etot   =    -15278.2995  EKtot   =      3373.4984  EPtot      =    -18651.7979
+ BOND   =        24.9042  ANGLE   =        24.2391  DIHED      =        11.5663
+ 1-4 NB =        11.7950  1-4 EEL =        37.8130  VDWAALS    =      2677.3159
+ EELEC  =    -21447.2184  EHBOND  =         0.0000  RESTRAINT  =         7.7869
+ EAMBER (non-restraint)  =    -18659.5848
+ DV/DL  =        10.4112
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.8593
+   Dist =     -0.3343  Angl =       0.0000  Tors =     -7.5250
+
+| TI region  2
+
+
+ NSTEP =    48000   TIME(PS) =     192.000  TEMP(K) =   299.91  PRESS =     0.0
+ Etot   =    -15278.2995  EKtot   =      3373.4984  EPtot      =    -18651.7979
+ BOND   =        24.9042  ANGLE   =        24.2391  DIHED      =        11.5663
+ 1-4 NB =        11.7950  1-4 EEL =        37.8130  VDWAALS    =      2677.3159
+ EELEC  =    -21447.2184  EHBOND  =         0.0000  RESTRAINT  =         7.7869
+ EAMBER (non-restraint)  =    -18659.5848
+ DV/DL  =        10.4112
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -7.8593
+   Dist =     -0.3343  Angl =       0.0000  Tors =     -7.5250
+ NMR restraints: Bond =    0.331   Angle =     0.000   Torsion =     7.456
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    49000   TIME(PS) =     196.000  TEMP(K) =   300.78  PRESS =     0.0
+ Etot   =    -15254.1372  EKtot   =      3383.2969  EPtot      =    -18637.4341
+ BOND   =        14.1050  ANGLE   =        20.0973  DIHED      =        12.2912
+ 1-4 NB =        10.9837  1-4 EEL =        36.0987  VDWAALS    =      2741.2176
+ EELEC  =    -21491.1968  EHBOND  =         0.0000  RESTRAINT  =        18.9693
+ EAMBER (non-restraint)  =    -18656.4034
+ DV/DL  =       -16.9001
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -19.1459
+   Dist =     -0.1847  Angl =       0.0000  Tors =    -18.9612
+
+| TI region  2
+
+
+ NSTEP =    49000   TIME(PS) =     196.000  TEMP(K) =   300.78  PRESS =     0.0
+ Etot   =    -15254.1372  EKtot   =      3383.2969  EPtot      =    -18637.4341
+ BOND   =        14.1050  ANGLE   =        20.0973  DIHED      =        12.2912
+ 1-4 NB =        10.9837  1-4 EEL =        36.0987  VDWAALS    =      2741.2176
+ EELEC  =    -21491.1968  EHBOND  =         0.0000  RESTRAINT  =        18.9693
+ EAMBER (non-restraint)  =    -18656.4034
+ DV/DL  =       -16.9001
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -19.1459
+   Dist =     -0.1847  Angl =       0.0000  Tors =    -18.9612
+ NMR restraints: Bond =    0.183   Angle =     0.000   Torsion =    18.786
+===============================================================================
+check COM velocity, temp for TI region  1:       0.000000     0.00(Removed)
+check COM velocity, temp for TI region  2:       0.000000     0.00(Removed)
+
+| TI region  1
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =   300.24  PRESS =     0.0
+ Etot   =    -15290.1393  EKtot   =      3377.2586  EPtot      =    -18667.3979
+ BOND   =        17.6359  ANGLE   =        19.7397  DIHED      =        21.9534
+ 1-4 NB =        10.6965  1-4 EEL =        34.5551  VDWAALS    =      2634.5094
+ EELEC  =    -21425.0849  EHBOND  =         0.0000  RESTRAINT  =        18.5969
+ EAMBER (non-restraint)  =    -18685.9948
+ DV/DL  =        -6.2424
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -18.7700
+   Dist =     -0.4053  Angl =       0.0000  Tors =    -18.3647
+
+| TI region  2
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =   300.24  PRESS =     0.0
+ Etot   =    -15290.1393  EKtot   =      3377.2586  EPtot      =    -18667.3979
+ BOND   =        17.6359  ANGLE   =        19.7397  DIHED      =        21.9534
+ 1-4 NB =        10.6965  1-4 EEL =        34.5551  VDWAALS    =      2634.5094
+ EELEC  =    -21425.0849  EHBOND  =         0.0000  RESTRAINT  =        18.5969
+ EAMBER (non-restraint)  =    -18685.9948
+ DV/DL  =        -6.2424
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =    -18.7700
+   Dist =     -0.4053  Angl =       0.0000  Tors =    -18.3647
+ NMR restraints: Bond =    0.402   Angle =     0.000   Torsion =    18.195
+===============================================================================
+
+| TI region  1
+
+
+      A V E R A G E S   O V E R      50 S T E P S
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =   224.83  PRESS =     0.0
+ Etot   =    -17742.7762  EKtot   =      2528.9777  EPtot      =    -20271.7539
+ BOND   =        14.6619  ANGLE   =        22.1831  DIHED      =        13.2613
+ 1-4 NB =        10.5313  1-4 EEL =        36.0364  VDWAALS    =      3284.2800
+ EELEC  =    -23662.2373  EHBOND  =         0.0000  RESTRAINT  =         9.5295
+ EAMBER (non-restraint)  =    -20281.2834
+ DV/DL  =        -1.2314
+ ------------------------------------------------------------------------------
+
+ NMR restraints: Bond =    0.402   Angle =     0.000   Torsion =    18.195
+===============================================================================
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.6182
+   Dist =     -0.2600  Angl =       0.0000  Tors =     -9.3582
+
+      R M S  F L U C T U A T I O N S
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =    78.86  PRESS =     0.0
+ Etot   =      2540.7511  EKtot   =       887.0819  EPtot      =      1660.9725
+ BOND   =         6.4184  ANGLE   =         7.6336  DIHED      =         3.8897
+ 1-4 NB =         1.0579  1-4 EEL =         1.4352  VDWAALS    =       626.1153
+ EELEC  =      2278.4592  EHBOND  =         0.0000  RESTRAINT  =         4.6282
+ EAMBER (non-restraint)  =      1656.3443
+ DV/DL  =         7.9348
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =      4.6713
+   Dist =      0.2089  Angl =       0.0000  Tors =      4.6057
+
+| TI region  2
+
+
+      A V E R A G E S   O V E R      50 S T E P S
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =   224.83  PRESS =     0.0
+ Etot   =    -17742.7762  EKtot   =      2528.9777  EPtot      =    -20271.7539
+ BOND   =        14.6619  ANGLE   =        22.1831  DIHED      =        13.2613
+ 1-4 NB =        10.5313  1-4 EEL =        36.0364  VDWAALS    =      3284.2800
+ EELEC  =    -23662.2373  EHBOND  =         0.0000  RESTRAINT  =         9.5295
+ EAMBER (non-restraint)  =    -20281.2834
+ DV/DL  =        -1.2314
+ ------------------------------------------------------------------------------
+
+ NMR restraints: Bond =    0.402   Angle =     0.000   Torsion =    18.195
+===============================================================================
+ Lambda-dependent restraint contribution to dV/Dl: Total =     -9.6182
+   Dist =     -0.2600  Angl =       0.0000  Tors =     -9.3582
+
+      R M S  F L U C T U A T I O N S
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =    78.86  PRESS =     0.0
+ Etot   =      2540.7511  EKtot   =       887.0819  EPtot      =      1660.9725
+ BOND   =         6.4184  ANGLE   =         7.6336  DIHED      =         3.8897
+ 1-4 NB =         1.0579  1-4 EEL =         1.4352  VDWAALS    =       626.1153
+ EELEC  =      2278.4592  EHBOND  =         0.0000  RESTRAINT  =         4.6282
+ EAMBER (non-restraint)  =      1656.3443
+ DV/DL  =         7.9348
+ ------------------------------------------------------------------------------
+
+ Lambda-dependent restraint contribution to dV/Dl: Total =      4.6713
+   Dist =      0.2089  Angl =       0.0000  Tors =      4.6057
+
+      DV/DL, AVERAGES OVER      50 STEPS
+
+
+ NSTEP =    50000   TIME(PS) =     200.000  TEMP(K) =    78.86  PRESS =     0.0
+ Etot   =         0.0000  EKtot   =         0.0000  EPtot      =        -1.2314
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =       -36.3717  VDWAALS    =         0.0000
+ EELEC  =        44.7585  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DV/DL  =        -1.2314
+ ------------------------------------------------------------------------------
+
+
+ NMR restraints on final step:
+
+ ------------------------------------------------------------------------------
+
+
+ Final Restraint Analysis for coords: md-heat.rst7                            
+
+
+ Restraints, deviations, and energy contributions:    pencut =   -1.00
+
+ ------------------------------------------------------------------------------
+     First atom        Last atom    curr. value target deviation  penalty
+ ------------------------------------------------------------------------------
+  C3   LIG    1 --  C9   LIG    1:    6.682    6.392    0.290    0.421 d    0: 0
+  C9   LIG    1 --  C11  LIG    1:    6.388    6.364    0.024    0.003 d    0: 0
+  C11  LIG    1 --  C3   LIG    1:    6.595    6.535    0.060    0.018 d    0: 0
+  C10  LIG    1 --  C9   LIG    1:  -13.763   -4.102    9.661    1.990 t
+  C5   LIG    1 --  C6   LIG    1:  174.574  174.162    0.413    0.004 t
+  C8   LIG    1 --  C9   LIG    1:   -5.996   -8.316    2.320    0.115 t
+  C7   LIG    1 --  C8   LIG    1:    8.269    9.382    1.113    0.026 t
+  C6   LIG    1 --  C7   LIG    1:    9.469    1.647    7.822    1.305 t
+  C    LIG    1 --  N2   LIG    1:  162.024  155.656    6.368    0.865 t
+  C5   LIG    1 --  C10  LIG    1: -171.036 -172.471    1.435    0.044 t
+  C    LIG    1 --  C1   LIG    1:   -0.364   16.096   16.460    5.777 t
+  N    LIG    1 --  N1   LIG    1:  -12.858   -2.975    9.883    2.083 t
+  C    LIG    1 --  C4   LIG    1:  178.997  172.131    6.867    1.006 t
+  C2   LIG    1 --  N    LIG    1:  178.097  173.910    4.187    0.374 t
+  C1   LIG    1 --  C2   LIG    1:  175.316  173.252    2.065    0.091 t
+  C4   LIG    1 --  N1   LIG    1:    6.862    5.550    1.312    0.037 t
+  C4   LIG    1 --  C5   LIG    1:  151.362  135.268   16.094    5.523 t
+                                       Total distance penalty:      0.441
+                                       Total torsion  penalty:     19.237
+ ------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+   5.  TIMINGS
+--------------------------------------------------------------------------------
+
+|  NonSetup CPU Time in Major Routines:
+|
+|     Routine           Sec        %
+|     ------------------------------
+|     Nonbond          12.14   33.52
+|     Bond              0.00    0.00
+|     Angle             0.00    0.00
+|     Dihedral          0.00    0.00
+|     Shake             0.13    0.37
+|     RunMD            23.81   65.74
+|     Other             0.13    0.37
+|     ------------------------------
+|     Total            36.22
+
+|  PME Nonbond Pairlist CPU Time:
+|
+|     Routine              Sec        %
+|     ---------------------------------
+|     Set Up Cit           0.00    0.00
+|     Build List           0.00    0.00
+|     ---------------------------------
+|     Total                0.00    0.00
+
+|  PME Direct Force CPU Time:
+|
+|     Routine              Sec        %
+|     ---------------------------------
+|     NonBonded Calc       0.00    0.00
+|     Exclude Masked       0.00    0.00
+|     Other                0.08    0.23
+|     ---------------------------------
+|     Total                0.08    0.23
+
+|  PME Reciprocal Force CPU Time:
+|
+|     Routine              Sec        %
+|     ---------------------------------
+|     1D bspline           0.00    0.00
+|     Grid Charges         0.00    0.00
+|     Scalar Sum           0.00    0.00
+|     Gradient Sum         0.00    0.00
+|     FFT                  0.00    0.00
+|     ---------------------------------
+|     Total                0.00    0.00
+
+|  Final Performance Info:
+|     -----------------------------------------------------
+|     Average timings for last   50000 steps:
+|     Elapsed(s) =      36.57 Per Step(ms) =       0.73
+|         ns/day =     472.52   seconds/ns =     182.85
+|
+|     Average timings for all steps:
+|     Elapsed(s) =      36.57 Per Step(ms) =       0.73
+|         ns/day =     472.52   seconds/ns =     182.85
+|     -----------------------------------------------------
+
+|  Setup CPU time:            0.99 seconds
+|  NonSetup CPU time:        36.22 seconds
+|  Total CPU time:           37.21 seconds     0.01 hours
+
+|  Setup wall time:           1    seconds
+|  NonSetup wall time:       37    seconds
+|  Total wall time:          38    seconds     0.01 hours

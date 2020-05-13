@@ -1,0 +1,156 @@
+
+CPPTRAJ: Trajectory Analysis. V18.01
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 04/28/20 18:40:30
+| Available memory: 745.386 MB
+
+INPUT: Reading input from 'assign.in'
+  [parm full.hmr.prmtop]
+	Reading 'full.hmr.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin full.inpcrd]
+	Reading 'full.inpcrd' as Amber Restart
+  [distance r0 :1@C3 :1@C9 noimage out assign.dat]
+    DISTANCE: :1@C3 to :1@C9, non-imaged, center of mass.
+  [distance r1 :1@C9 :1@C11 noimage out assign.dat]
+    DISTANCE: :1@C9 to :1@C11, non-imaged, center of mass.
+  [distance r2 :1@C11 :1@C3 noimage out assign.dat]
+    DISTANCE: :1@C11 to :1@C3, non-imaged, center of mass.
+  [dihedral r6 :1@C5 :1@C10 :1@C9 :1@C8 out assign.dat]
+    DIHEDRAL: [:1@C5]-[:1@C10]-[:1@C9]-[:1@C8]
+              Output range is -180 to 180 degrees.
+  [dihedral r7 :1@C4 :1@C5 :1@C6 :1@C7 out assign.dat]
+    DIHEDRAL: [:1@C4]-[:1@C5]-[:1@C6]-[:1@C7]
+              Output range is -180 to 180 degrees.
+  [dihedral r18 :1@C7 :1@C8 :1@C9 :1@C10 out assign.dat]
+    DIHEDRAL: [:1@C7]-[:1@C8]-[:1@C9]-[:1@C10]
+              Output range is -180 to 180 degrees.
+  [dihedral r19 :1@C6 :1@C7 :1@C8 :1@C9 out assign.dat]
+    DIHEDRAL: [:1@C6]-[:1@C7]-[:1@C8]-[:1@C9]
+              Output range is -180 to 180 degrees.
+  [dihedral r20 :1@C5 :1@C6 :1@C7 :1@C8 out assign.dat]
+    DIHEDRAL: [:1@C5]-[:1@C6]-[:1@C7]-[:1@C8]
+              Output range is -180 to 180 degrees.
+  [dihedral r21 :1@C4 :1@C :1@N2 :1@C11 out assign.dat]
+    DIHEDRAL: [:1@C4]-[:1@C]-[:1@N2]-[:1@C11]
+              Output range is -180 to 180 degrees.
+  [dihedral r22 :1@C4 :1@C5 :1@C10 :1@C9 out assign.dat]
+    DIHEDRAL: [:1@C4]-[:1@C5]-[:1@C10]-[:1@C9]
+              Output range is -180 to 180 degrees.
+  [dihedral r26 :1@C4 :1@C :1@C1 :1@C2 out assign.dat]
+    DIHEDRAL: [:1@C4]-[:1@C]-[:1@C1]-[:1@C2]
+              Output range is -180 to 180 degrees.
+  [dihedral r27 :1@C2 :1@N :1@N1 :1@C4 out assign.dat]
+    DIHEDRAL: [:1@C2]-[:1@N]-[:1@N1]-[:1@C4]
+              Output range is -180 to 180 degrees.
+  [dihedral r28 :1@C1 :1@C :1@C4 :1@C5 out assign.dat]
+    DIHEDRAL: [:1@C1]-[:1@C]-[:1@C4]-[:1@C5]
+              Output range is -180 to 180 degrees.
+  [dihedral r29 :1@C1 :1@C2 :1@N :1@C3 out assign.dat]
+    DIHEDRAL: [:1@C1]-[:1@C2]-[:1@N]-[:1@C3]
+              Output range is -180 to 180 degrees.
+  [dihedral r30 :1@C :1@C1 :1@C2 :1@O out assign.dat]
+    DIHEDRAL: [:1@C]-[:1@C1]-[:1@C2]-[:1@O]
+              Output range is -180 to 180 degrees.
+  [dihedral r31 :1@C :1@C4 :1@N1 :1@N out assign.dat]
+    DIHEDRAL: [:1@C]-[:1@C4]-[:1@N1]-[:1@N]
+              Output range is -180 to 180 degrees.
+  [dihedral r32 :1@C :1@C4 :1@C5 :1@C10 out assign.dat]
+    DIHEDRAL: [:1@C]-[:1@C4]-[:1@C5]-[:1@C10]
+              Output range is -180 to 180 degrees.
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: full.hmr.prmtop, 5675 atoms, 1885 res, box: Orthogonal, 1885 mol, 1867 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'full.inpcrd' is an AMBER restart file, no velocities, Parm full.hmr.prmtop (Orthogonal box) (reading 1 of 1)
+  Coordinate processing will occur on 1 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'full.hmr.prmtop' (17 actions):
+  0: [distance r0 :1@C3 :1@C9 noimage out assign.dat]
+	:1@C3 (1 atoms) to :1@C9 (1 atoms), imaging off.
+  1: [distance r1 :1@C9 :1@C11 noimage out assign.dat]
+	:1@C9 (1 atoms) to :1@C11 (1 atoms), imaging off.
+  2: [distance r2 :1@C11 :1@C3 noimage out assign.dat]
+	:1@C11 (1 atoms) to :1@C3 (1 atoms), imaging off.
+  3: [dihedral r6 :1@C5 :1@C10 :1@C9 :1@C8 out assign.dat]
+	 [:1@C5](1) [:1@C10](1) [:1@C9](1) [:1@C8](1)
+  4: [dihedral r7 :1@C4 :1@C5 :1@C6 :1@C7 out assign.dat]
+	 [:1@C4](1) [:1@C5](1) [:1@C6](1) [:1@C7](1)
+  5: [dihedral r18 :1@C7 :1@C8 :1@C9 :1@C10 out assign.dat]
+	 [:1@C7](1) [:1@C8](1) [:1@C9](1) [:1@C10](1)
+  6: [dihedral r19 :1@C6 :1@C7 :1@C8 :1@C9 out assign.dat]
+	 [:1@C6](1) [:1@C7](1) [:1@C8](1) [:1@C9](1)
+  7: [dihedral r20 :1@C5 :1@C6 :1@C7 :1@C8 out assign.dat]
+	 [:1@C5](1) [:1@C6](1) [:1@C7](1) [:1@C8](1)
+  8: [dihedral r21 :1@C4 :1@C :1@N2 :1@C11 out assign.dat]
+	 [:1@C4](1) [:1@C](1) [:1@N2](1) [:1@C11](1)
+  9: [dihedral r22 :1@C4 :1@C5 :1@C10 :1@C9 out assign.dat]
+	 [:1@C4](1) [:1@C5](1) [:1@C10](1) [:1@C9](1)
+  10: [dihedral r26 :1@C4 :1@C :1@C1 :1@C2 out assign.dat]
+	 [:1@C4](1) [:1@C](1) [:1@C1](1) [:1@C2](1)
+  11: [dihedral r27 :1@C2 :1@N :1@N1 :1@C4 out assign.dat]
+	 [:1@C2](1) [:1@N](1) [:1@N1](1) [:1@C4](1)
+  12: [dihedral r28 :1@C1 :1@C :1@C4 :1@C5 out assign.dat]
+	 [:1@C1](1) [:1@C](1) [:1@C4](1) [:1@C5](1)
+  13: [dihedral r29 :1@C1 :1@C2 :1@N :1@C3 out assign.dat]
+	 [:1@C1](1) [:1@C2](1) [:1@N](1) [:1@C3](1)
+  14: [dihedral r30 :1@C :1@C1 :1@C2 :1@O out assign.dat]
+	 [:1@C](1) [:1@C1](1) [:1@C2](1) [:1@O](1)
+  15: [dihedral r31 :1@C :1@C4 :1@N1 :1@N out assign.dat]
+	 [:1@C](1) [:1@C4](1) [:1@N1](1) [:1@N](1)
+  16: [dihedral r32 :1@C :1@C4 :1@C5 :1@C10 out assign.dat]
+	 [:1@C](1) [:1@C4](1) [:1@C5](1) [:1@C10](1)
+----- full.inpcrd (1-1, 1) -----
+100% Complete.
+
+Read 1 frames and processed 1 frames.
+TIME: Avg. throughput= 221.4839 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (17 total):
+	r0 "r0" (double, distance), size is 1
+	r1 "r1" (double, distance), size is 1
+	r2 "r2" (double, distance), size is 1
+	r6 "r6" (double, torsion), size is 1
+	r7 "r7" (double, torsion), size is 1
+	r18 "r18" (double, torsion), size is 1
+	r19 "r19" (double, torsion), size is 1
+	r20 "r20" (double, torsion), size is 1
+	r21 "r21" (double, torsion), size is 1
+	r22 "r22" (double, torsion), size is 1
+	r26 "r26" (double, torsion), size is 1
+	r27 "r27" (double, torsion), size is 1
+	r28 "r28" (double, torsion), size is 1
+	r29 "r29" (double, torsion), size is 1
+	r30 "r30" (double, torsion), size is 1
+	r31 "r31" (double, torsion), size is 1
+	r32 "r32" (double, torsion), size is 1
+
+DATAFILES (1 total):
+  assign.dat (Standard Data File):  r0 r1 r2 r6 ... r29 r30 r31 r32
+
+RUN TIMING:
+TIME:		Init               : 0.0000 s (  0.32%)
+TIME:		Trajectory Process : 0.0045 s ( 51.44%)
+TIME:		Action Post        : 0.0000 s (  0.01%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0042 s ( 47.66%)
+TIME:		Other              : 0.0000 s (  0.01%)
+TIME:	Run Total 0.0088 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 0.0619 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+
