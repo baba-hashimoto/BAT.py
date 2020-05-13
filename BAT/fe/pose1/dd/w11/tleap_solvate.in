@@ -1,0 +1,81 @@
+source leaprc.gaff
+
+# Load the ligand parameters
+loadamberparams lig.frcmod
+LIG = loadmol2 lig.mol2
+
+model = loadpdb lig.pdb
+
+# Load the water and jc ion parameters
+source leaprc.water.tip3p
+loadamberparams frcmod.ionsjc_tip3p
+
+check model
+savepdb model vac.pdb
+saveamberparm model vac.prmtop vac.inpcrd
+
+# Create water box with chosen model
+solvatebox model TIP3PBOX 15.0
+
+# Add ions for neutralization/ionization
+addionsrand model Na+ 8
+addionsrand model Cl- 0
+
+desc model
+savepdb model full.pdb
+saveamberparm model full.prmtop full.inpcrd
+quit
+source leaprc.gaff
+
+# Load the ligand parameters
+loadamberparams lig.frcmod
+LIG = loadmol2 lig.mol2
+
+model = loadpdb lig.pdb
+
+# Load the water and jc ion parameters
+source leaprc.water.tip3p
+loadamberparams frcmod.ionsjc_tip3p
+
+check model
+savepdb model vac.pdb
+saveamberparm model vac.prmtop vac.inpcrd
+
+# Create water box with chosen model
+solvatebox model TIP3PBOX 15.0
+
+# Add ions for neutralization/ionization
+addionsrand model Na+ 8
+addionsrand model Cl- 0
+
+desc model
+savepdb model full.pdb
+saveamberparm model full.prmtop full.inpcrd
+quit
+source leaprc.gaff
+
+# Load the ligand parameters
+loadamberparams lig.frcmod
+LIG = loadmol2 lig.mol2
+
+model = loadpdb lig.pdb
+
+# Load the water and jc ion parameters
+source leaprc.water.tip3p
+loadamberparams frcmod.ionsjc_tip3p
+
+check model
+savepdb model vac.pdb
+saveamberparm model vac.prmtop vac.inpcrd
+
+# Create water box with chosen model
+solvatebox model TIP3PBOX 15.0
+
+# Add ions for neutralization/ionization
+addionsrand model Na+ 8
+addionsrand model Cl- 0
+
+desc model
+savepdb model full.pdb
+saveamberparm model full.prmtop full.inpcrd
+quit

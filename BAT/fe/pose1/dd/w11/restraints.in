@@ -1,0 +1,29 @@
+# Anchor atoms  :58@CA  :79@CA  :105@CA  :1@C3  :1@C9  :1@C11  stage = fe  
+noexitonerror
+parm vac.prmtop
+trajin md02.nc
+trajin md03.nc
+trajin md04.nc
+trajin md05.nc
+trajin md06.nc
+trajin md07.nc
+trajin md08.nc
+trajin md09.nc
+trajin md10.nc
+distance d0 :1@C3 :1@C9 noimage out restraints.dat
+distance d1 :1@C9 :1@C11 noimage out restraints.dat
+distance d2 :1@C11 :1@C3 noimage out restraints.dat
+dihedral a3 :1@C5 :1@C10 :1@C9 :1@C8 out restraints.dat
+dihedral a4 :1@C4 :1@C5 :1@C6 :1@C7 out restraints.dat
+dihedral a5 :1@C7 :1@C8 :1@C9 :1@C10 out restraints.dat
+dihedral a6 :1@C6 :1@C7 :1@C8 :1@C9 out restraints.dat
+dihedral a7 :1@C5 :1@C6 :1@C7 :1@C8 out restraints.dat
+dihedral a8 :1@C4 :1@C :1@N2 :1@C11 out restraints.dat
+dihedral a9 :1@C4 :1@C5 :1@C10 :1@C9 out restraints.dat
+dihedral a10 :1@C4 :1@C :1@C1 :1@C2 out restraints.dat
+dihedral a11 :1@C2 :1@N :1@N1 :1@C4 out restraints.dat
+dihedral a12 :1@C1 :1@C :1@C4 :1@C5 out restraints.dat
+dihedral a13 :1@C1 :1@C2 :1@N :1@C3 out restraints.dat
+dihedral a14 :1@C :1@C1 :1@C2 :1@O out restraints.dat
+dihedral a15 :1@C :1@C4 :1@N1 :1@N out restraints.dat
+dihedral a16 :1@C :1@C4 :1@C5 :1@C10 out restraints.dat
